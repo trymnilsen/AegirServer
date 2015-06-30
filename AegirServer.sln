@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirServer", "AegirServer\AegirServer.csproj", "{CC6F63FF-98CF-4BE0-A711-9337F41E702E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirSimulation", "AegirSimulation\AegirSimulation.csproj", "{939B417A-89BD-41E3-95DF-1E04E5E235B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirGeodesy", "AegirGeodesy\AegirGeodesy.csproj", "{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirNMEA", "AegirNMEA\AegirNMEA.csproj", "{5CEF24DD-51BF-4046-89EA-A034E42FB947}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirConfig", "AegirConfig\AegirConfig.csproj", "{5258B163-863A-4D79-9693-1A6111402DD7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC6F63FF-98CF-4BE0-A711-9337F41E702E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6F63FF-98CF-4BE0-A711-9337F41E702E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6F63FF-98CF-4BE0-A711-9337F41E702E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6F63FF-98CF-4BE0-A711-9337F41E702E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5258B163-863A-4D79-9693-1A6111402DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5258B163-863A-4D79-9693-1A6111402DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5258B163-863A-4D79-9693-1A6111402DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5258B163-863A-4D79-9693-1A6111402DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
