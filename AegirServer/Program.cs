@@ -1,4 +1,5 @@
-﻿using AegirServer.CLI.Flags;
+﻿using AegirServer.CLI;
+using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace AegirServer
         static void Main(string[] args)
         {
             //Get flags from passed command args
-            FlagSet flags = new FlagSet();
-            flags.ParseFlags(args);
+            CLIOptions options = new CLIOptions();
 
-            AegirServer server = new AegirServer(flags);
-            server.Start();
+            if (Parser.Default.ParseArguments(args, options))
+            {
+                CLIAppStart appStarter = new CLIAppStart(options);
+                appStarter.Start();
+            }
         }
     }
 }
