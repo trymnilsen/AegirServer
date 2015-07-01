@@ -50,6 +50,9 @@
     <Reference Include="CommandLine">
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.1.2.0\lib\net40\Nancy.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -66,12 +69,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLI\CLIAppStart.cs" />
-    <Compile Include="CLI\CLIOptions.cs" />
+    <Compile Include="AppStarter.cs" />
+    <Compile Include="CLI\Environment.cs" />
+    <Compile Include="CLI\Options.cs" />
     <Compile Include="Config\ConfigFile.cs" />
     <Compile Include="Config\BaseConfiguration.cs" />
+    <Compile Include="HTTP\HTTPEnvironment.cs" />
+    <Compile Include="Messages\EMessengerBufferMode.cs" />
+    <Compile Include="Messages\Messenger.cs" />
+    <Compile Include="Messages\Postbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\EnvironmentHost.cs" />
+    <Compile Include="Runtime\IEnvironment.cs" />
+    <Compile Include="Websocket\WebsocketEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -81,8 +92,6 @@
     <Folder Include="Controller\" />
     <Folder Include="Entity\" />
     <Folder Include="Message\" />
-    <Folder Include="Tasks\" />
-    <Folder Include="Websocket\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

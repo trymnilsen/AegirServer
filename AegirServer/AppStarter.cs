@@ -1,16 +1,19 @@
-﻿using AegirServer.Config;
+﻿using AegirServer.CLI;
+using AegirServer.Config;
+using AegirServer.HTTP;
+using AegirServer.Websocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.CLI
+namespace AegirServer
 {
-    public class CLIAppStart
+    public class AppStarter
     {
-        private CLIOptions options;
-        public CLIAppStart(CLIOptions options)
+        private Options options;
+        public AppStarter(Options options)
         {
             this.options = options;
         }
@@ -23,8 +26,16 @@ namespace AegirServer.CLI
             if(config!=null)
             {
                 Console.WriteLine("Name :" + config.Name);
-
             }
+        }
+        private void StartSubsystems()
+        {
+            //Create our environment
+            var CliEnv          = new CLIEnvironment();
+            var HTTPEnv         = new HTTPEnvironment();
+            var WebsocketEnv    = new WebsocketEnvironment();
+
+
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AegirServer.CLI
 {
-    public class CLIOptions
+    public class Options
     {
         [Option('r', "read", 
             DefaultValue = "foobar",

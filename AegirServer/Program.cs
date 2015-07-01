@@ -13,11 +13,11 @@ namespace AegirServer
         static void Main(string[] args)
         {
             //Get flags from passed command args
-            CLIOptions options = new CLIOptions();
+            Options options = new Options();
 
             if (Parser.Default.ParseArguments(args, options))
             {
-                CLIAppStart appStarter = new CLIAppStart(options);
+                AppStarter appStarter = new AppStarter(options);
                 appStarter.Start();
             }
 
