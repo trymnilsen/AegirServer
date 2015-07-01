@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="CLI\CLIAppStart.cs" />
     <Compile Include="CLI\CLIOptions.cs" />
+    <Compile Include="Config\ConfigFile.cs" />
+    <Compile Include="Config\BaseConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

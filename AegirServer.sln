@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirGeodesy", "AegirGeodes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirNMEA", "AegirNMEA\AegirNMEA.csproj", "{5CEF24DD-51BF-4046-89EA-A034E42FB947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirConfig", "AegirConfig\AegirConfig.csproj", "{5258B163-863A-4D79-9693-1A6111402DD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirLogging", "AegirLogging\AegirLogging.csproj", "{EE50156F-855A-4639-8FBF-E6252FF8D58F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5258B163-863A-4D79-9693-1A6111402DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5258B163-863A-4D79-9693-1A6111402DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5258B163-863A-4D79-9693-1A6111402DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5258B163-863A-4D79-9693-1A6111402DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE50156F-855A-4639-8FBF-E6252FF8D58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE50156F-855A-4639-8FBF-E6252FF8D58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE50156F-855A-4639-8FBF-E6252FF8D58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE50156F-855A-4639-8FBF-E6252FF8D58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AegirServer.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,10 @@ namespace AegirServer.CLI
         public void Start()
         {
             if (options.Verbose) Console.WriteLine("Filename: {0}", options.InputFile);
+            //Load configuration
+            ConfigFile configurationFile = new ConfigFile("foobar.txt");
+            BaseConfiguration config = configurationFile.Load();
+            Console.WriteLine("Name :" + config.Name);
         }
     }
 }
