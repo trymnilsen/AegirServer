@@ -20,6 +20,11 @@ namespace AegirServer
                 CLIAppStart appStarter = new CLIAppStart(options);
                 appStarter.Start();
             }
+
+            if(System.Diagnostics.Debugger.IsAttached)
+            {
+                Console.ReadKey(true);
+            }
         }
     }
 }

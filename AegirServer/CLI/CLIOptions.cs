@@ -11,7 +11,7 @@ namespace AegirServer.CLI
     public class CLIOptions
     {
         [Option('r', "read", 
-            Required = true,
+            DefaultValue = "foobar",
             HelpText = "Input file to be processed.")]
         public string InputFile { get; set; }
 

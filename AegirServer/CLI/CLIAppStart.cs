@@ -20,7 +20,11 @@ namespace AegirServer.CLI
             //Load configuration
             ConfigFile configurationFile = new ConfigFile("foobar.txt");
             BaseConfiguration config = configurationFile.Load();
-            Console.WriteLine("Name :" + config.Name);
+            if(config!=null)
+            {
+                Console.WriteLine("Name :" + config.Name);
+
+            }
         }
     }
 }

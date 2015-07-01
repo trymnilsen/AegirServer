@@ -23,11 +23,12 @@ namespace AegirServer.Config
         {
             if(File.Exists(this.FileSource))
             {
+                string fileContent = File.ReadAllText(this.FileSource);
+                BaseConfiguration config = JsonConvert.DeserializeObject<BaseConfiguration>(fileContent);
+                return config;
                 //Fooobar
             }
-            string fileContent = File.ReadAllText(this.FileSource);
-            BaseConfiguration config = JsonConvert.DeserializeObject<BaseConfiguration>(fileContent);
-            return config;
+            return null;
         }
     }
 }
