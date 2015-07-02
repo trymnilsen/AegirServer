@@ -11,17 +11,24 @@ namespace AegirServer.Runtime
     public class ModuleHost
     {
         private Task workerThread;
-        private EventWaitHandle exitHandle;
 
+        public EventWaitHandle ExitHandle { get; private set; }
         public Module Environment { get; private set; }
         /// <summary>
         /// Create a new host for this environment
         /// </summary>
-        /// <param name="env">The environment to host</param>
-        public ModuleHost(Module env, BaseConfiguration config)
+        /// <param name="mod">The environment to host</param>
+        public ModuleHost(Module mod, BaseConfiguration config)
         {
-            this.Environment = env;
-            env.SetConfiguration(config);
+            this.Environment = mod;
+            this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
+            mod.SetConfiguration(config);
+            mod.OnFinishedStopping += env_OnFinishedStopping;
+        }
+
+        void env_OnFinishedStopping(object sender, EventArgs e)
+        {
+            this.ExitHandle.Set();
         }
         public void Start()
         {
@@ -31,7 +38,7 @@ namespace AegirServer.Runtime
         }
         public void Stop()
         {
-            Environment.Shutdown();
+            Environment.Stop();
         }
     }
 }

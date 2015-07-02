@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AegirServer
@@ -16,12 +17,12 @@ namespace AegirServer
         private BaseConfiguration config;
         private Options options;
 
-        private List<ModuleHost> envHosts;
+        private List<ModuleHost> modHosts;
 
         public AppStarter(Options options)
         {
             this.options = options;
-            this.envHosts = new List<ModuleHost>();
+            this.modHosts = new List<ModuleHost>();
         }
         public void Start()
         {
@@ -33,12 +34,25 @@ namespace AegirServer
             StartSubsystem(new HTTPModule());
             Console.WriteLine("Press any key to close");
             Console.ReadKey();
+            Console.WriteLine("Closing");
+            this.StopModules();
         }
-        private void StartSubsystem(Module env)
+        private void StartSubsystem(Module mod)
         {
-            ModuleHost host = new ModuleHost(env, this.config);
-            envHosts.Add(host);
+            ModuleHost host = new ModuleHost(mod, this.config);
+            modHosts.Add(host);
             host.Start();
+        }
+        private void StopModules()
+        {
+            //Get all wait handles
+            WaitHandle[] waitHandles = new WaitHandle[modHosts.Count];
+            for (int i = 0; i < modHosts.Count; i++)
+            {
+                waitHandles[i] = modHosts[i].ExitHandle;
+                modHosts[i].Stop();
+            }
+            WaitHandle.WaitAll(waitHandles);
         }
     }
 }

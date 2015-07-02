@@ -24,7 +24,16 @@ namespace AegirServer.HTTP
             this.connection = new HttpListener();
         }
 
-        public void Startup()
+        public override void SetConfiguration(BaseConfiguration config)
+        {
+            this.RootAddress = config.HttpEndpoint;
+        }
+        public override void Stop()
+        {
+            connection.Stop();
+            connection.Close();
+        }
+        public override void Startup()
         {
             validateSettings();
             Console.WriteLine("Starting HTTP on " + RootAddress);
@@ -33,16 +42,6 @@ namespace AegirServer.HTTP
             StartListeningForRequests();
         }
 
-        public void SetConfiguration(BaseConfiguration config)
-        {
-            this.RootAddress = config.HttpEndpoint;
-        }
-
-        public void Shutdown()
-        {
-            connection.Stop();
-            connection.Close();
-        }
         /// <summary>
         /// Todo move into own class/task
         /// </summary>
@@ -77,6 +76,8 @@ namespace AegirServer.HTTP
             {
                 Console.WriteLine("Error in HTTP Env \n" + e.ToString());
             }
+            //We have stopped
+            base.NotifyFinishedStopping();
         }
         private string HandleRequest(HttpListenerRequest request)
         {
@@ -90,7 +91,7 @@ namespace AegirServer.HTTP
             }
             if(RootAddress == NO_ADDRESS)
             {
-                throw new InvalidOperationException("HTTP Environment had no address to use , found "+this.RootAddress);
+                throw new InvalidOperationException("HTTP Modeule had no address to use , found "+this.RootAddress);
             }
         }
     }
