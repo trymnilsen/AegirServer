@@ -9,7 +9,7 @@ namespace AegirServer.CLI
     /// <summary>
     /// The Cli Environment is reposible for routing input from the user, and pushing out anything to the console
     /// </summary>
-    public class CLIEnvironment
+    public class CLIModule
     {
 
     }

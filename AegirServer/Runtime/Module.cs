@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AegirServer.Runtime
 {
-    public abstract class Environment
+    public abstract class Module
     {
         public abstract void Startup();
         public abstract void SetConfiguration(BaseConfiguration config);

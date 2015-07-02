@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace AegirServer.Runtime
 {
-    public class EnvironmentHost
+    public class ModuleHost
     {
         private Task workerThread;
         private EventWaitHandle exitHandle;
 
-        public Environment Environment { get; private set; }
+        public Module Environment { get; private set; }
         /// <summary>
         /// Create a new host for this environment
         /// </summary>
         /// <param name="env">The environment to host</param>
-        public EnvironmentHost(Environment env, BaseConfiguration config)
+        public ModuleHost(Module env, BaseConfiguration config)
         {
             this.Environment = env;
             env.SetConfiguration(config);

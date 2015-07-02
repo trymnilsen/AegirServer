@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AegirServer.HTTP
 {
-    public class HTTPEnvironment : Environment
+    public class HTTPModule : Module
     {
         public const string NO_ADDRESS = "NOPATH";
 
@@ -19,7 +19,7 @@ namespace AegirServer.HTTP
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
 
-        public HTTPEnvironment()
+        public HTTPModule()
         {
             this.connection = new HttpListener();
         }

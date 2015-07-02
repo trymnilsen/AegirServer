@@ -16,12 +16,12 @@ namespace AegirServer
         private BaseConfiguration config;
         private Options options;
 
-        private List<EnvironmentHost> envHosts;
+        private List<ModuleHost> envHosts;
 
         public AppStarter(Options options)
         {
             this.options = options;
-            this.envHosts = new List<EnvironmentHost>();
+            this.envHosts = new List<ModuleHost>();
         }
         public void Start()
         {
@@ -30,13 +30,13 @@ namespace AegirServer
             ConfigFile configurationFile = new ConfigFile("config.json");
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
-            StartSubsystem(new HTTPEnvironment());
+            StartSubsystem(new HTTPModule());
             Console.WriteLine("Press any key to close");
             Console.ReadKey();
         }
-        private void StartSubsystem(Environment env)
+        private void StartSubsystem(Module env)
         {
-            EnvironmentHost host = new EnvironmentHost(env, this.config);
+            ModuleHost host = new ModuleHost(env, this.config);
             envHosts.Add(host);
             host.Start();
         }
