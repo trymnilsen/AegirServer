@@ -9,5 +9,6 @@ namespace AegirServer.Config
     public class BaseConfiguration
     {
         public string Name { get; set; }
+        public string HttpEndpoint { get; set; }
     }
 }
