@@ -32,13 +32,13 @@ namespace AegirServer
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
             StartSubsystem(new HTTPModule());
-            Console.WriteLine("Press any key to close");
+           // Console.WriteLine("Press any key to close");
             Console.ReadKey();
-            Console.WriteLine("Closing");
             this.StopModules();
         }
         private void StartSubsystem(Module mod)
         {
+            Console.WriteLine("Starting: " + mod.ToString());
             ModuleHost host = new ModuleHost(mod, this.config);
             modHosts.Add(host);
             host.Start();
@@ -49,10 +49,12 @@ namespace AegirServer
             WaitHandle[] waitHandles = new WaitHandle[modHosts.Count];
             for (int i = 0; i < modHosts.Count; i++)
             {
+                Console.WriteLine("Stopping Module - " + modHosts[i].HostedModule.ToString());
                 waitHandles[i] = modHosts[i].ExitHandle;
                 modHosts[i].Stop();
             }
             WaitHandle.WaitAll(waitHandles);
+            Console.WriteLine("All Modules Stopped");
         }
     }
 }

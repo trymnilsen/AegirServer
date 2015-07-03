@@ -13,14 +13,14 @@ namespace AegirServer.Runtime
         private Task workerThread;
 
         public EventWaitHandle ExitHandle { get; private set; }
-        public Module Environment { get; private set; }
+        public Module HostedModule { get; private set; }
         /// <summary>
-        /// Create a new host for this environment
+        /// Create a new host for this module
         /// </summary>
-        /// <param name="mod">The environment to host</param>
+        /// <param name="mod">The module to host</param>
         public ModuleHost(Module mod, BaseConfiguration config)
         {
-            this.Environment = mod;
+            this.HostedModule = mod;
             this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
             mod.SetConfiguration(config);
             mod.OnFinishedStopping += env_OnFinishedStopping;
@@ -32,13 +32,13 @@ namespace AegirServer.Runtime
         }
         public void Start()
         {
-            Task worker = new Task(this.Environment.Startup, 
+            Task worker = new Task(this.HostedModule.Startup, 
                                    TaskCreationOptions.LongRunning);
             worker.Start();
         }
         public void Stop()
         {
-            Environment.Stop();
+            HostedModule.Stop();
         }
     }
 }

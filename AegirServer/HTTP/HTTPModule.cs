@@ -31,7 +31,6 @@ namespace AegirServer.HTTP
         public override void Stop()
         {
             connection.Stop();
-            connection.Close();
         }
         public override void Startup()
         {
@@ -53,6 +52,7 @@ namespace AegirServer.HTTP
                 //TODO rewrite with async await
                 while(connection.IsListening)
                 {
+                    HttpListenerContext context = connection.GetContext();
                     ThreadPool.QueueUserWorkItem((c) =>
                     {
                         var ctx = c as HttpListenerContext;
@@ -69,19 +69,32 @@ namespace AegirServer.HTTP
                             // always close the stream
                             ctx.Response.OutputStream.Close();
                         }
-                    },connection.GetContext());
+                    }, context);
                 }
+            }
+            catch(HttpListenerException hlex)
+            {
+                //We get an exception because the GetContext call is considered an 
+                //ongoing IO operation until it returns, so when we stop it from our
+                //other thread, the listener is quite flabbergasted.. and returns 995
+                //operation aborted.. If this happens we want to ignore it
+                if(hlex.ErrorCode != 995)
+                {
+                    Console.WriteLine("HttpListener Exception:" + hlex.ToString());
+                }
+                
             }
             catch(Exception e)
             {
-                Console.WriteLine("Error in HTTP Env \n" + e.ToString());
+                Console.WriteLine("Error in HTTP Module \n" + e.ToString());
             }
             //We have stopped
+            connection.Close();
             base.NotifyFinishedStopping();
         }
         private string HandleRequest(HttpListenerRequest request)
         {
-            return this.ResponseTest;
+            return this.ResponseTest + DateTime.Now.ToLongTimeString();
         }
         private void validateSettings()
         {
