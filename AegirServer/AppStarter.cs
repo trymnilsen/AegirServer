@@ -1,6 +1,6 @@
 ﻿using AegirServer.CLI;
 using AegirServer.Config;
-using AegirServer.HTTP;
+using AegirServer.Module;
 using AegirServer.Runtime;
 using AegirServer.Websocket;
 using System;
@@ -36,7 +36,7 @@ namespace AegirServer
             Console.ReadKey();
             this.StopModules();
         }
-        private void StartSubsystem(Module mod)
+        private void StartSubsystem(AbstractModule mod)
         {
             Console.WriteLine("Starting: " + mod.ToString());
             ModuleHost host = new ModuleHost(mod, this.config);

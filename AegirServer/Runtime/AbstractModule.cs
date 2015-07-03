@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace AegirServer.Runtime
 {
-    public abstract class Module
+
+    public abstract class AbstractModule
     {
         public delegate void FinishedStopHandler(object sender, EventArgs e);
         public event FinishedStopHandler OnFinishedStopping;

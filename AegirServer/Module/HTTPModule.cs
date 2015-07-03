@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AegirServer.HTTP
+namespace AegirServer.Module
 {
-    public class HTTPModule : Module
+    public class HTTPModule : AbstractModule
     {
         public const string NO_ADDRESS = "NOPATH";
 

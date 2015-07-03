@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirSimulation
+namespace AegirSimulation.Components.Water
 {
-    public class Class1
+    class Buoyancy
     {
     }
 }

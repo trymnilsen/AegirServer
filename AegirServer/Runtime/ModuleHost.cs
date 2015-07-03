@@ -13,12 +13,12 @@ namespace AegirServer.Runtime
         private Task workerThread;
 
         public EventWaitHandle ExitHandle { get; private set; }
-        public Module HostedModule { get; private set; }
+        public AbstractModule HostedModule { get; private set; }
         /// <summary>
         /// Create a new host for this module
         /// </summary>
         /// <param name="mod">The module to host</param>
-        public ModuleHost(Module mod, BaseConfiguration config)
+        public ModuleHost(AbstractModule mod, BaseConfiguration config)
         {
             this.HostedModule = mod;
             this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
