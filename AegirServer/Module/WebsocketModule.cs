@@ -29,6 +29,7 @@ namespace AegirServer.Websocket
         public override void Stop()
         {
             wsServer.Stop();
+            NotifyModuleStopped();
         }
 
         public override void Startup()
@@ -39,6 +40,7 @@ namespace AegirServer.Websocket
             wsServer = new WebSocketServer("ws://localhost:8888");
 
             wsServer.AddWebSocketService<SimulationService>("/Simulation");
+            
         }
     }
 }
