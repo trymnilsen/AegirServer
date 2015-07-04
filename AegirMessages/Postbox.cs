@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace AegirMessages
 {
-    public class Postbox
+    public abstract class Postbox
     {
-        private EMessengerBufferMode bufferMode;
+        protected Dispatcher dispatcher;
 
-        public Postbox(EMessengerBufferMode bufferMode)
+        public Postbox()
         {
-            this.bufferMode = bufferMode;
+
         }
-        public PostMessage()
+        public Postbox(Dispatcher dispatcher)
+        {
+            this.dispatcher = dispatcher;
+        }
+        public abstract void PostMessage(Message message);
     }
 }

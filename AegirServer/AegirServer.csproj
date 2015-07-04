@@ -64,6 +64,7 @@
     <Reference Include="websocket-sharp">
       <HintPath>..\packages\WebSocketSharp.1.0.3-rc8\lib\websocket-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
@@ -72,9 +73,6 @@
     <Compile Include="Config\ConfigFile.cs" />
     <Compile Include="Config\BaseConfiguration.cs" />
     <Compile Include="Module\HTTPModule.cs" />
-    <Compile Include="Message\EMessengerBufferMode.cs" />
-    <Compile Include="Message\Messenger.cs" />
-    <Compile Include="Message\Postbox.cs" />
     <Compile Include="Module\NMEAOutputModule.cs" />
     <Compile Include="Module\SimulationModule.cs" />
     <Compile Include="Program.cs" />

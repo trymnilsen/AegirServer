@@ -1,4 +1,5 @@
-﻿using AegirServer.Config;
+﻿using AegirMessages;
+using AegirServer.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,11 @@ namespace AegirServer.Runtime
         /// Create a new host for this module
         /// </summary>
         /// <param name="mod">The module to host</param>
-        public ModuleHost(AbstractModule mod, BaseConfiguration config)
+        public ModuleHost(AbstractModule mod, Messenger messenger, BaseConfiguration config)
         {
             this.HostedModule = mod;
             this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
+            mod.SetMessenger(messenger);
             mod.SetConfiguration(config);
             mod.OnFinishedStopping += env_OnFinishedStopping;
         }
@@ -32,7 +34,7 @@ namespace AegirServer.Runtime
         }
         public void Start()
         {
-            Task worker = new Task(this.HostedModule.Run, 
+            Task worker = new Task(this.HostedModule.Init, 
                                    TaskCreationOptions.LongRunning);
             worker.Start();
         }

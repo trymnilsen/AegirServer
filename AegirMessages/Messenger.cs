@@ -16,7 +16,7 @@ namespace AegirMessages
         {
 
         }
-        public SendMessage()
+        public void SendMessage()
         {
 
         }
