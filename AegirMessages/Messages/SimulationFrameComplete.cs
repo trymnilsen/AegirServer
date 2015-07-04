@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AegirMessages.Messages
 {
-    class SimulationFrameComplete
+    public class SimulationFrameComplete : Message
     {
+        public SimulationFrameComplete()
+            :base("SimulationFrameComplete")
+        {
+
+        }
     }
 }

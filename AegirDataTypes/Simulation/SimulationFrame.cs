@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirMessages
+namespace AegirDataTypes.Simulation
 {
-    public enum EMessengerBufferMode
+    public class SimulationFrame
     {
-        PUSH,
-        BUFFER
     }
 }

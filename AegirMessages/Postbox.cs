@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirMessages.Message
+namespace AegirMessages
 {
     public class Postbox
     {
