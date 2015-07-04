@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirDataTypes.Simulation
+namespace AegirServer.Websocket.Service
 {
-    public class SimulationFrame
+    class LogService
     {
     }
 }
