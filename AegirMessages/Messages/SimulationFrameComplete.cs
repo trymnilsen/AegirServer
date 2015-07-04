@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirMessages
+namespace AegirMessages.Messages
 {
-    public class Class1
+    class SimulationFrameComplete
     {
     }
 }

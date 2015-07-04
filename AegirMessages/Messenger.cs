@@ -16,6 +16,9 @@ namespace AegirMessages.Message
         {
 
         }
-        public 
+        public SendMessage()
+        {
+
+        }
     }
 }
