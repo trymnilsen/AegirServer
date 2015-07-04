@@ -10,5 +10,11 @@ namespace AegirServer.Config
     {
         public string Name { get; set; }
         public string HttpEndpoint { get; set; }
+
+        public BaseConfiguration()
+        {
+            this.Name = "Foobar";
+            this.HttpEndpoint = "http://localhost/";
+        }
     }
 }

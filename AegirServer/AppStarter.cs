@@ -1,4 +1,5 @@
-﻿using AegirServer.CLI;
+﻿using AegirMessages;
+using AegirServer.CLI;
 using AegirServer.Config;
 using AegirServer.Module;
 using AegirServer.Runtime;
@@ -12,18 +13,30 @@ using System.Threading.Tasks;
 
 namespace AegirServer
 {
+    /// <summary>
+    /// The Appstarter class is used to bootstrap the application
+    /// as well as loading and starting all the modules
+    /// </summary>
     public class AppStarter
     {
         private BaseConfiguration config;
         private Options options;
+        private Messenger messenger;
 
         private List<ModuleHost> modHosts;
-
+        /// <summary>
+        /// Creates a new Appstart instance
+        /// </summary>
+        /// <param name="options"></param>
         public AppStarter(Options options)
         {
             this.options = options;
             this.modHosts = new List<ModuleHost>();
+            this.messenger = new Messenger();
         }
+        /// <summary>
+        /// Starts the application and modules
+        /// </summary>
         public void Start()
         {
             if (options.Verbose) Console.WriteLine("Filename: {0}", options.InputFile);
@@ -31,15 +44,27 @@ namespace AegirServer
             ConfigFile configurationFile = new ConfigFile("config.json");
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
+            //Set up ctrl + c handling
+            Console.CancelKeyPress += Console_CancelKeyPress;
+            //Start Subsystems
             StartSubsystem(new HTTPModule());
-           // Console.WriteLine("Press any key to close");
+            //StartSubsystem(new SimulationModule());
+
+
+            Console.WriteLine("Press any key to close");
             Console.ReadKey();
             this.StopModules();
         }
+
+        void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+            this.StopModules();
+        }
+
         private void StartSubsystem(AbstractModule mod)
         {
             Console.WriteLine("Starting: " + mod.ToString());
-            ModuleHost host = new ModuleHost(mod, this.config);
+            ModuleHost host = new ModuleHost(mod, messenger, this.config);
             modHosts.Add(host);
             host.Start();
         }
