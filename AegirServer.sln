@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirLogging", "AegirLoggin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirValidate", "AegirValidate\AegirValidate.csproj", "{27E7B3CF-6758-4FD7-AF83-89A2DD3AA68F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirMessages", "AegirMessages\AegirMessages.csproj", "{C9A7BFD4-AECB-4BF2-BFEB-8D057357A5F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{27E7B3CF-6758-4FD7-AF83-89A2DD3AA68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27E7B3CF-6758-4FD7-AF83-89A2DD3AA68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27E7B3CF-6758-4FD7-AF83-89A2DD3AA68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A7BFD4-AECB-4BF2-BFEB-8D057357A5F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A7BFD4-AECB-4BF2-BFEB-8D057357A5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A7BFD4-AECB-4BF2-BFEB-8D057357A5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A7BFD4-AECB-4BF2-BFEB-8D057357A5F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,9 +72,9 @@
     <Compile Include="Config\ConfigFile.cs" />
     <Compile Include="Config\BaseConfiguration.cs" />
     <Compile Include="Module\HTTPModule.cs" />
-    <Compile Include="Messages\EMessengerBufferMode.cs" />
-    <Compile Include="Messages\Messenger.cs" />
-    <Compile Include="Messages\Postbox.cs" />
+    <Compile Include="Message\EMessengerBufferMode.cs" />
+    <Compile Include="Message\Messenger.cs" />
+    <Compile Include="Message\Postbox.cs" />
     <Compile Include="Module\NMEAOutputModule.cs" />
     <Compile Include="Module\SimulationModule.cs" />
     <Compile Include="Program.cs" />
@@ -90,7 +90,6 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Entity\" />
-    <Folder Include="Message\" />
     <Folder Include="Output\" />
   </ItemGroup>
   <ItemGroup>
