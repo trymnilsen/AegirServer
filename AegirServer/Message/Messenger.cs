@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.Messages
+namespace AegirServer.Message
 {
 
     public class Messenger
@@ -16,5 +16,6 @@ namespace AegirServer.Messages
         {
 
         }
+        public 
     }
 }

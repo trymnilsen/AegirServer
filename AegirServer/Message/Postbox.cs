@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.Messages
+namespace AegirServer.Message
 {
     public class Postbox
     {
@@ -14,5 +14,6 @@ namespace AegirServer.Messages
         {
             this.bufferMode = bufferMode;
         }
+        public PostMessage()
     }
 }
