@@ -15,10 +15,11 @@ namespace AegirServer.Runtime
         public event FinishedStopHandler OnFinishedStopping;
 
         public abstract void Startup();
+        public abstract void Run();
         public abstract void SetConfiguration(BaseConfiguration config);
         public abstract void Stop();
 
-        protected void NotifyFinishedStopping()
+        protected void NotifyModuleStopped()
         {
             FinishedStopHandler stopEvent = OnFinishedStopping;
             if(stopEvent != null)

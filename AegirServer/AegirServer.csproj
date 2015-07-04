@@ -111,6 +111,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AegirGeodesy\AegirGeodesy.csproj">
+      <Project>{34e2bbe0-b917-4cd5-b5fc-652e3d875c5e}</Project>
+      <Name>AegirGeodesy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirLogging\AegirLogging.csproj">
+      <Project>{ee50156f-855a-4639-8fbf-e6252ff8d58f}</Project>
+      <Name>AegirLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirNMEA\AegirNMEA.csproj">
+      <Project>{5cef24dd-51bf-4046-89ea-a034e42fb947}</Project>
+      <Name>AegirNMEA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirSimulation\AegirSimulation.csproj">
+      <Project>{939b417a-89bd-41e3-95df-1e04e5e235b0}</Project>
+      <Name>AegirSimulation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AegirValidate\AegirValidate.csproj">
       <Project>{27e7b3cf-6758-4fd7-af83-89a2dd3aa68f}</Project>
       <Name>AegirValidate</Name>

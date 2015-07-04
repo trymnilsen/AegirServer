@@ -33,11 +33,8 @@ namespace AegirServer.Module
         {
             connection.Stop();
         }
-        public override void Startup()
+        public override void Run()
         {
-            validateSettings();
-            Console.WriteLine("Starting HTTP on " + RootAddress);
-            connection.Prefixes.Add(this.RootAddress);
             connection.Start();
             StartListeningForRequests();
         }
@@ -91,7 +88,7 @@ namespace AegirServer.Module
             }
             //We have stopped
             connection.Close();
-            base.NotifyFinishedStopping();
+            base.NotifyModuleStopped();
         }
         private string HandleRequest(HttpListenerRequest request)
         {
@@ -107,6 +104,13 @@ namespace AegirServer.Module
             {
                 throw new InvalidOperationException("HTTP Modeule had no address to use , found "+this.RootAddress);
             }
+        }
+
+        public override void Startup()
+        {
+            validateSettings();
+            Console.WriteLine("Starting HTTP on " + RootAddress);
+            connection.Prefixes.Add(this.RootAddress);
         }
     }
 }

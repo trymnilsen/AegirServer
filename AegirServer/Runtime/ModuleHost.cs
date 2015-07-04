@@ -32,7 +32,7 @@ namespace AegirServer.Runtime
         }
         public void Start()
         {
-            Task worker = new Task(this.HostedModule.Startup, 
+            Task worker = new Task(this.HostedModule.Run, 
                                    TaskCreationOptions.LongRunning);
             worker.Start();
         }

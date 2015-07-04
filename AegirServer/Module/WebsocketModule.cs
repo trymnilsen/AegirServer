@@ -9,7 +9,7 @@ namespace AegirServer.Websocket
 {
     class WebsocketModule : AbstractModule
     {
-        public override void Startup()
+        public override void Run()
         {
             throw new NotImplementedException();
         }
@@ -20,6 +20,11 @@ namespace AegirServer.Websocket
         }
 
         public override void Stop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Startup()
         {
             throw new NotImplementedException();
         }

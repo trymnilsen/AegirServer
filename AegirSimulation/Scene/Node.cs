@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirSimulation.Scenegraph
+namespace AegirSimulation.Scene
 {
     class Node
     {

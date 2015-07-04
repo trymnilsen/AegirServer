@@ -13,7 +13,7 @@ namespace AegirServer.Module
     public class CLIModule : AbstractModule
     {
 
-        public override void Startup()
+        public override void Run()
         {
             throw new NotImplementedException();
         }
@@ -24,6 +24,11 @@ namespace AegirServer.Module
         }
 
         public override void Stop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Startup()
         {
             throw new NotImplementedException();
         }
