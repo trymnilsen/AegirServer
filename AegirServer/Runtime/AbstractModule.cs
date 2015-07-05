@@ -14,9 +14,14 @@ namespace AegirServer.Runtime
     public abstract class AbstractModule
     {
         private Dispatcher dispatcher;
-
+        /// <summary>
+        /// Retrieve the messenger assigned to this module
+        /// </summary>
         public Messenger Messenger { get; private set; }
-
+        /// <summary>
+        /// Messages this module has received based on its subscriptions with the messenger
+        /// </summary>
+        public Postbox Messages { get; private set; }
         public abstract void Startup();
         public abstract void Run();
         public abstract void SetConfiguration(BaseConfiguration config);

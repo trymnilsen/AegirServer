@@ -9,9 +9,11 @@ namespace AegirMessages
     public abstract class Message
     {
         public string Name { get; private set; }
-        public Message(string name)
+        public EChannel Channel { get; private set; }
+        public Message(string name, EChannel channel)
         {
             this.Name = name;
+            this.Channel = channel;
         }
     }
 }

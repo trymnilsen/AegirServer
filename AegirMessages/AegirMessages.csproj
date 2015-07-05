@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferedPostbox.cs" />
+    <Compile Include="EChannel.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Messages\SimulationFrameComplete.cs" />
     <Compile Include="Messenger.cs" />

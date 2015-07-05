@@ -9,7 +9,7 @@ namespace AegirMessages.Messages
     public class SimulationFrameComplete : Message
     {
         public SimulationFrameComplete()
-            :base("SimulationFrameComplete")
+            :base("SimulationFrameComplete", EChannel.SIMULATION)
         {
 
         }
