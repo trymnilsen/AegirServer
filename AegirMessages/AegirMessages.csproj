@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.37-beta-23019\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +46,7 @@
     <Compile Include="BufferedPostbox.cs" />
     <Compile Include="EChannel.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="MessageSubscriptions.cs" />
     <Compile Include="Messages\SimulationFrameComplete.cs" />
     <Compile Include="Messenger.cs" />
     <Compile Include="Postbox.cs" />
@@ -54,6 +58,9 @@
       <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
       <Name>AegirDataTypes</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

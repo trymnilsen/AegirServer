@@ -1,4 +1,5 @@
-﻿using AegirServer.Config;
+﻿using AegirMessages;
+using AegirServer.Config;
 using AegirServer.Runtime;
 using AegirValidate;
 using System;
@@ -19,7 +20,8 @@ namespace AegirServer.Module
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
 
-        public HTTPModule()
+        public HTTPModule(Messenger messenger)
+            :base(messenger)
         {
             this.connection = new HttpListener();
         }

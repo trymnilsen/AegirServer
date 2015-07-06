@@ -11,9 +11,11 @@ namespace AegirMessages
     {
         protected Dispatcher dispatcher;
 
+        public bool IsOpen { get; set; }
+
         public Postbox()
         {
-
+            IsOpen = true;
         }
         public Postbox(Dispatcher dispatcher)
         {

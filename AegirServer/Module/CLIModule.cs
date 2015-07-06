@@ -1,4 +1,5 @@
-﻿using AegirServer.Runtime;
+﻿using AegirMessages;
+using AegirServer.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace AegirServer.Module
     /// </summary>
     public class CLIModule : AbstractModule
     {
+        public CLIModule(Messenger messenger )
+            : base(messenger) { }
 
         public override void Run()
         {

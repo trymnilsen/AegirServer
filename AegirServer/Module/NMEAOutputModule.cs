@@ -9,6 +9,7 @@ namespace AegirServer.Module
 {
     class NMEAOutputModule : AbstractModule
     {
+        NMEAOutputModule
         public override void Run()
         {
             throw new NotImplementedException();

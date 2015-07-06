@@ -21,7 +21,15 @@ namespace AegirServer.Runtime
         /// <summary>
         /// Messages this module has received based on its subscriptions with the messenger
         /// </summary>
-        public Postbox Messages { get; private set; }
+        public Postbox Messages { get; protected set; }
+        /// <summary>
+        /// Create a new module with the given messenger
+        /// </summary>
+        /// <param name="messenger"></param>
+        public AbstractModule(Messenger messenger)
+        {
+            this.Messenger = messenger;
+        }
         public abstract void Startup();
         public abstract void Run();
         public abstract void SetConfiguration(BaseConfiguration config);
@@ -37,10 +45,6 @@ namespace AegirServer.Runtime
             this.Startup();
             //Run it
             this.Run();
-        }
-        public void SetMessenger(Messenger messenger)
-        {
-            this.Messenger = messenger;
         }
         protected void NotifyModuleStopped()
         {

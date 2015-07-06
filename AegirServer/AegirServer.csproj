@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
+    <Compile Include="HTTP\OutputController.cs" />
     <Compile Include="Module\CLIModule.cs" />
     <Compile Include="CLI\Options.cs" />
     <Compile Include="Config\ConfigFile.cs" />
@@ -93,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Entity\" />
     <Folder Include="Output\" />
   </ItemGroup>
   <ItemGroup>
