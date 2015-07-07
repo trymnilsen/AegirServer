@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ namespace AegirServer.Websocket
         public void SendToAll(ISerializeableFrame frame)
         {
             string content = frame.Serialize();
-            this.Sessions.Broadcast(content);
+            Debug.WriteLine("Sending :" + content);
+            if(this.Sessions != null)
+            {
+                this.Sessions.Broadcast(content);
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using AegirServer.Runtime;
+﻿using AegirDataTypes.Simulation;
+using AegirMessages.Simulation;
+using AegirServer.Runtime;
 using AegirSimulation.Scene;
 using AegirSimulation.Simulation;
 using System;
@@ -37,6 +39,8 @@ namespace AegirServer.Module
             long nextTime = 0;
             long lastUpdate = 0;
             long deltaTime = 0;
+            frameTime = 33;
+            isRunning = true;
             while(isRunning)
             {
                 long elapsedTime = stopwatch.ElapsedMilliseconds;
@@ -45,6 +49,7 @@ namespace AegirServer.Module
                 {
                     //When will our next update be?
                     nextTime += frameTime;
+
                     deltaTime = (elapsedTime - lastUpdate);
                     Update(deltaTime);
                     lastUpdate = stopwatch.ElapsedMilliseconds;
@@ -72,7 +77,7 @@ namespace AegirServer.Module
 
         public override void SetConfiguration(Config.BaseConfiguration config)
         {
-            throw new NotImplementedException();
+            Debug.WriteLine("TODO add config to Simulation");
         }
 
         public override void Stop()
@@ -82,8 +87,10 @@ namespace AegirServer.Module
 
         private void Update(long deltaTime)
         {
+            Debug.WriteLine("Updating");
             Simulation.StepSimulation(deltaTime);
-
+            //The simulation is complete
+            this.Messenger.Publish(new SimulationFrameComplete(Simulation.latestDataSet));
         }
     }
 }

@@ -49,7 +49,7 @@ namespace AegirServer
             Console.CancelKeyPress += Console_CancelKeyPress;
             //Start Subsystems
             StartSubsystem(new HTTPModule());
-            //StartSubsystem(new SimulationModule());
+            StartSubsystem(new SimulationModule());
             StartSubsystem(new WebsocketModule());
 
             Console.WriteLine("Press any key to close");

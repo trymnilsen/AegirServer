@@ -3,6 +3,7 @@ using AegirMessenger;
 using AegirServer.Config;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -31,6 +32,7 @@ namespace AegirServer.Runtime
 
         void env_OnFinishedStopping(object sender, EventArgs e)
         {
+            Debug.WriteLine("Module Stopped: " + HostedModule.ToString());
             this.ExitHandle.Set();
         }
         public void Start()
