@@ -12,36 +12,37 @@ namespace AegirMessages
         private object addLock = new object();
         private object unRegisterLock = new object();
         private object sendMessageLock = new object();
-        private Dictionary<Message, MessageSubscriptions> subscriptions; 
+        private Dictionary<Type, MessageSubscriptions> subscriptions; 
         /// <summary>
         /// Creates new messenger for sending and receving messages
         /// </summary>
         public Messenger()
         {
-            subscriptions = new Dictionary<Message, MessageSubscriptions>();
+            subscriptions = new Dictionary<Type, MessageSubscriptions>();
         }
         public void UnsubscribePostbox(Postbox postbox)
         {
             postbox.IsOpen = false;
         }
-        public void Register(Postbox postbox, Message message)
+        public void Register<T>(Postbox postbox) where T : Message
         {
+            Type MessageType = typeof(T);
             lock(addLock)
             {
-                if(!subscriptions.ContainsKey(message))
+                if(!subscriptions.ContainsKey(MessageType))
                 {
-                    subscriptions.Add(message, new MessageSubscriptions());
+                    subscriptions.Add(MessageType, new MessageSubscriptions());
                 }
-                subscriptions[message].AddPostbox(postbox);
+                subscriptions[MessageType].AddPostbox(postbox);
             }
         }
         public void Publish(Message message)
         {
             lock(sendMessageLock)
             {
-                if(!subscriptions.ContainsKey(message))
+                if (!subscriptions.ContainsKey(message.GetType()))
                 {
-                    subscriptions[message].SendToPostboxes(message);
+                    subscriptions[message.GetType()].SendToPostboxes(message);
                 }
             }
         }

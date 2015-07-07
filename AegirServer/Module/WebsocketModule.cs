@@ -1,4 +1,5 @@
-﻿using AegirServer.Config;
+﻿using AegirMessages;
+using AegirServer.Config;
 using AegirServer.Runtime;
 using AegirServer.Websocket.Service;
 using System;
@@ -41,6 +42,12 @@ namespace AegirServer.Websocket
 
             wsServer.AddWebSocketService<SimulationService>("/Simulation");
             
+           
+        }
+        private void SetUpPostbox()
+        {
+            this.Messages = new PushPostbox(this.Dispatcher);
+            this.Messenger.Register(this.Messages, )
         }
     }
 }

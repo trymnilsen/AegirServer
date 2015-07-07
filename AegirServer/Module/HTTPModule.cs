@@ -20,8 +20,7 @@ namespace AegirServer.Module
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
 
-        public HTTPModule(Messenger messenger)
-            :base(messenger)
+        public HTTPModule()
         {
             this.connection = new HttpListener();
         }

@@ -13,23 +13,16 @@ namespace AegirServer.Runtime
 
     public abstract class AbstractModule
     {
-        private Dispatcher dispatcher;
+        public Dispatcher Dispatcher { get; private set; }
         /// <summary>
         /// Retrieve the messenger assigned to this module
         /// </summary>
-        public Messenger Messenger { get; private set; }
+        public Messenger Messenger { get; set; }
         /// <summary>
         /// Messages this module has received based on its subscriptions with the messenger
         /// </summary>
         public Postbox Messages { get; protected set; }
-        /// <summary>
-        /// Create a new module with the given messenger
-        /// </summary>
-        /// <param name="messenger"></param>
-        public AbstractModule(Messenger messenger)
-        {
-            this.Messenger = messenger;
-        }
+
         public abstract void Startup();
         public abstract void Run();
         public abstract void SetConfiguration(BaseConfiguration config);
@@ -40,7 +33,7 @@ namespace AegirServer.Runtime
         public void Init()
         {
             //Get a dispatcher for this thread
-            dispatcher = Dispatcher.CurrentDispatcher;
+            Dispatcher = Dispatcher.CurrentDispatcher;
             //init
             this.Startup();
             //Run it

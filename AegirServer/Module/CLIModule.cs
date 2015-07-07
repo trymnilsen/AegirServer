@@ -13,8 +13,6 @@ namespace AegirServer.Module
     /// </summary>
     public class CLIModule : AbstractModule
     {
-        public CLIModule(Messenger messenger )
-            : base(messenger) { }
 
         public override void Run()
         {

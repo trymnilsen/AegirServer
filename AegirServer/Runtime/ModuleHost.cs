@@ -23,7 +23,7 @@ namespace AegirServer.Runtime
         {
             this.HostedModule = mod;
             this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
-            mod.SetMessenger(messenger);
+            mod.Messenger = messenger;
             mod.SetConfiguration(config);
             mod.OnFinishedStopping += env_OnFinishedStopping;
         }
