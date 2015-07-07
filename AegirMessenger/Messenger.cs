@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,9 @@ namespace AegirMessenger
         {
             lock(sendMessageLock)
             {
-                if (!subscriptions.ContainsKey(message.GetType()))
+                if (subscriptions.ContainsKey(message.GetType()))
                 {
+                    Debug.WriteLine("Publishing : " + message.ToString());
                     subscriptions[message.GetType()].SendToPostboxes(message);
                 }
             }

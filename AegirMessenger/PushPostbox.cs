@@ -21,14 +21,14 @@ namespace AegirMessenger
         public override void PostMessage(Message message)
         {
             //Using closure to make it easy to send the message
-            this.dispatcher.Invoke(() =>
-            {
+            //this.dispatcher.Invoke(() =>
+            //{
                 MessageReceivedHandler messageEvent = OnMessage;
                 if (messageEvent != null)
                 {
                     messageEvent(message);
                 }
-            });
+            //});
         }
 
         public delegate void MessageReceivedHandler(Message message);
