@@ -9,8 +9,17 @@ using WebSocketSharp.Server;
 
 namespace AegirServer.Websocket.Service
 {
-    public class SimulationService : WebSocketBehavior
+    public class SimulationService : WebsocketService
     {
+        public const string SERVICE_NAME = "simulation";
+        public override string ServiceName
+        {
+            get
+            {
+                return SERVICE_NAME;
+            }
+        }
+
         protected override void OnMessage(MessageEventArgs e)
         {
             Debug.WriteLine("Simulation Frame received: "+e.Data);

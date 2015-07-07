@@ -1,4 +1,5 @@
 ﻿using AegirDataTypes.Simulation;
+using AegirServer.Websocket.Service;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,14 @@ namespace AegirServer.Websocket.Frames
     {
 
         private SimulationStep data;
+
+        public string ServiceName
+        {
+            get
+            {
+                return SimulationService.SERVICE_NAME;
+            }
+        }
 
         public SimulationWebsocketFrame(SimulationStep simulationData) 
         {

@@ -81,11 +81,14 @@
     <Compile Include="Runtime\ModuleHost.cs" />
     <Compile Include="Runtime\AbstractModule.cs" />
     <Compile Include="Module\WebsocketModule.cs" />
+    <Compile Include="Websocket\FrameMappers\SimulationCompleteMapper.cs" />
     <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
+    <Compile Include="Websocket\IFrameMapper.cs" />
     <Compile Include="Websocket\ISerializeableFrame.cs" />
     <Compile Include="Websocket\Service\LogService.cs" />
     <Compile Include="Websocket\Service\PlaybackService.cs" />
     <Compile Include="Websocket\Service\SimulationService.cs" />
+    <Compile Include="Websocket\WebsocketFrameResolver.cs" />
     <Compile Include="Websocket\WebsocketService.cs" />
   </ItemGroup>
   <ItemGroup>

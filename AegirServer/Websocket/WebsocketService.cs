@@ -7,8 +7,9 @@ using WebSocketSharp.Server;
 
 namespace AegirServer.Websocket
 {
-    class WebsocketService : WebSocketBehavior
+    public abstract class WebsocketService : WebSocketBehavior
     {
+        public abstract string ServiceName { get; }
         public void SendToAll(ISerializeableFrame frame)
         {
             string content = frame.Serialize();

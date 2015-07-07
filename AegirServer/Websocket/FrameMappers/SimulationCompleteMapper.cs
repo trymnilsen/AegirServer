@@ -1,4 +1,7 @@
 ﻿using AegirMessages;
+using AegirMessages.Simulation;
+using AegirMessenger;
+using AegirServer.Websocket.Frames;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +14,15 @@ namespace AegirServer.Websocket.FrameMappers
     {
         public ISerializeableFrame CreateFrameFromMessage(Message message)
         {
-            throw new NotImplementedException();
+            var simulationMessage = message as SimulationFrameComplete;
+            if(message != null)
+            {
+                return new SimulationWebsocketFrame(simulationMessage.data);
+            }
+            return null;
         }
 
-        public AegirMessages.Message CreateMessageFromFrame(ISerializeableFrame frame)
+        public Message CreateMessageFromFrame(ISerializeableFrame frame)
         {
             throw new NotImplementedException();
         }
