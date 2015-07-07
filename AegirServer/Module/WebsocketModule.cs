@@ -4,7 +4,6 @@ using AegirMessenger;
 using AegirServer.Config;
 using AegirServer.Runtime;
 using AegirServer.Websocket.FrameMappers;
-using AegirServer.Websocket.Service;
 using Fleck;
 using System;
 using System.Collections.Generic;
@@ -16,11 +15,9 @@ namespace AegirServer.Websocket
 {
     class WebsocketModule : AbstractModule
     {
-        private SimulationService simulationSocket;
         private WebSocketServer wsServer;
         private WebsocketFrameResolver frameResolver;
         private IWebSocketConnection webSocketConnection;
-        private Dictionary<string, WebsocketService> services;
 
         public override void Run()
         {
@@ -48,8 +45,6 @@ namespace AegirServer.Websocket
 
         public override void Startup()
         {
-            simulationSocket = new SimulationService();
-            services = new Dictionary<string, WebsocketService>();
             Console.WriteLine("Creating WS on port 8888");
             wsServer = new WebSocketServer("ws://0.0.0.0:8888");
 

@@ -8,7 +8,6 @@ namespace AegirServer.Websocket
 {
     public interface ISerializeableFrame
     {
-        string ServiceName { get; }
         string Serialize();
         object Deserialize(string data);
     }
