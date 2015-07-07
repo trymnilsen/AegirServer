@@ -1,4 +1,5 @@
 ﻿using AegirMessages;
+using AegirMessenger;
 using AegirServer.Config;
 using System;
 using System.Collections.Generic;

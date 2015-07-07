@@ -1,4 +1,5 @@
 ﻿using AegirMessages;
+using AegirMessenger;
 using AegirServer.CLI;
 using AegirServer.Config;
 using AegirServer.Module;

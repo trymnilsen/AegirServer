@@ -1,4 +1,6 @@
 ﻿using AegirMessages;
+using AegirMessages.Simulation;
+using AegirMessenger;
 using AegirServer.Config;
 using AegirServer.Runtime;
 using AegirServer.Websocket.Service;
@@ -42,12 +44,18 @@ namespace AegirServer.Websocket
 
             wsServer.AddWebSocketService<SimulationService>("/Simulation");
             
-           
         }
         private void SetUpPostbox()
         {
-            this.Messages = new PushPostbox(this.Dispatcher);
-            this.Messenger.Register(this.Messages, )
+            PushPostbox postbox = new PushPostbox(this.Dispatcher);
+            this.Messenger.Register<SimulationFrameComplete>(postbox);
+
+            postbox.OnMessage += postbox_OnMessage;
+        }
+
+        void postbox_OnMessage(Message message)
+        {
+            
         }
     }
 }

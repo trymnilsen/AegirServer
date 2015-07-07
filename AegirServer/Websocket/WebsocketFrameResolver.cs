@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirMessages
+namespace AegirServer.Websocket
 {
-    public enum EChannel
+    public class WebsocketFrameResolver
     {
-        SIMULATION,
-        LOGGIN
     }
 }

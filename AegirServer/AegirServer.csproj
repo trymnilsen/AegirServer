@@ -130,6 +130,10 @@
       <Project>{c9a7bfd4-aecb-4bf2-bfeb-8d057357a5f7}</Project>
       <Name>AegirMessages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AegirMessenger\AegirMessenger.csproj">
+      <Project>{790bc77e-85b2-448e-a39e-38b7fcd50c2a}</Project>
+      <Name>AegirMessenger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AegirNMEA\AegirNMEA.csproj">
       <Project>{5cef24dd-51bf-4046-89ea-a034e42fb947}</Project>
       <Name>AegirNMEA</Name>

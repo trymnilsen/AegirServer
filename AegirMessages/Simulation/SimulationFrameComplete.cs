@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AegirMessenger;
 
-namespace AegirMessages.Messages
+namespace AegirMessages.Simulation
 {
     public class SimulationFrameComplete : Message
     {

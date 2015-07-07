@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace AegirMessages
+namespace AegirMessenger
 {
     public abstract class Postbox
     {
