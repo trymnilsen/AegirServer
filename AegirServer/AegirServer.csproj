@@ -71,8 +71,12 @@
     <Compile Include="AppStarter.cs" />
     <Compile Include="HTTP\Controller.cs" />
     <Compile Include="HTTP\Controller\FileController.cs" />
+    <Compile Include="HTTP\Controller\LoadSaveController.cs" />
     <Compile Include="HTTP\Controller\OuputController.cs" />
     <Compile Include="HTTP\Controller\ReplayController.cs" />
+    <Compile Include="HTTP\Controller\SettingsController.cs" />
+    <Compile Include="HTTP\Controller\StatisticsController.cs" />
+    <Compile Include="HTTP\Controller\VesselConfigurationController.cs" />
     <Compile Include="HTTP\OutputController.cs" />
     <Compile Include="Module\CLIModule.cs" />
     <Compile Include="CLI\Options.cs" />
