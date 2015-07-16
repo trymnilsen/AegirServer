@@ -15,7 +15,7 @@ namespace AegirServer.Module
     public class HTTPModule : AbstractModule
     {
         public const string NO_ADDRESS = "NOPATH";
-
+        private List<Controller> controllers;
         private HttpListener connection = new HttpListener();
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
@@ -56,12 +56,25 @@ namespace AegirServer.Module
                         var ctx = c as HttpListenerContext;
                         try
                         {
-                            string rstr = this.HandleRequest(ctx.Request);
+                            string rstr = "";
+                            HttpStatusCode status = HttpStatusCode.OK;
+                            try
+                            {
+                                rstr = this.HandleRequest(ctx.Request);
+                            }
+                            catch(HTTPException hex)
+                            {
+
+                            }
+                            catch(Exception e)
+                            {
+
+                            }
                             byte[] buf = Encoding.UTF8.GetBytes(rstr);
                             ctx.Response.ContentLength64 = buf.Length;
                             ctx.Response.OutputStream.Write(buf, 0, buf.Length);
                         }
-                        catch { } // suppress any exceptions
+                        catch { } // suppress any exceptions by the writing to response buffer
                         finally
                         {
                             // always close the stream

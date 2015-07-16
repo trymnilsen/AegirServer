@@ -69,7 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
-    <Compile Include="HTTP\Controller.cs" />
+    <Compile Include="HTTP\Controller\MountPointController.cs" />
+    <Compile Include="HTTP\HTTPController.cs" />
     <Compile Include="HTTP\Controller\FileController.cs" />
     <Compile Include="HTTP\Controller\LoadSaveController.cs" />
     <Compile Include="HTTP\Controller\OuputController.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="CLI\Options.cs" />
     <Compile Include="Config\ConfigFile.cs" />
     <Compile Include="Config\BaseConfiguration.cs" />
+    <Compile Include="HTTP\HTTPException.cs" />
     <Compile Include="Module\HTTPModule.cs" />
     <Compile Include="Module\NMEAOutputModule.cs" />
     <Compile Include="Module\SimulationModule.cs" />
