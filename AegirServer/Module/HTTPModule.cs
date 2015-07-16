@@ -1,5 +1,7 @@
 ﻿using AegirMessages;
 using AegirServer.Config;
+using AegirServer.HTTP;
+using AegirServer.HTTP.Controller;
 using AegirServer.Runtime;
 using AegirValidate;
 using System;
@@ -15,7 +17,7 @@ namespace AegirServer.Module
     public class HTTPModule : AbstractModule
     {
         public const string NO_ADDRESS = "NOPATH";
-        private List<Controller> controllers;
+        private List<HTTPController> controllers;
         private HttpListener connection = new HttpListener();
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
@@ -23,11 +25,21 @@ namespace AegirServer.Module
         public HTTPModule()
         {
             this.connection = new HttpListener();
+            this.controllers = new List<HTTPController>(new HTTPController[] { 
+                new MountPointController(),
+                new FileController()
+            });
         }
 
         public override void SetConfiguration(BaseConfiguration config)
         {
             this.RootAddress = config.HttpEndpoint;
+        }
+        public override void Startup()
+        {
+            validateSettings();
+            Console.WriteLine("Starting HTTP on " + RootAddress);
+            connection.Prefixes.Add(this.RootAddress);
         }
         public override void Stop()
         {
@@ -119,11 +131,5 @@ namespace AegirServer.Module
             }
         }
 
-        public override void Startup()
-        {
-            validateSettings();
-            Console.WriteLine("Starting HTTP on " + RootAddress);
-            connection.Prefixes.Add(this.RootAddress);
-        }
     }
 }

@@ -8,6 +8,9 @@ namespace AegirServer.HTTP.Controller
 {
     public class FileController : HTTPController
     {
-
+        public override string Name
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

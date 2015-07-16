@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AegirServer.HTTP.Controller
 {
-    class StatisticsController
+    public class StatisticsController
     {
+
     }
 }

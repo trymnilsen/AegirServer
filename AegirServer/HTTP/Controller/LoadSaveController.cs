@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AegirServer.HTTP.Controller
 {
-    class LoadSaveController
+    public class LoadSaveController : HTTPController
     {
+        public override string Name
+        {
+            get { return "MountPoint"; }
+        }
     }
 }

@@ -7,8 +7,29 @@ using System.Threading.Tasks;
 
 namespace AegirServer.HTTP
 {
-    public class HTTPController
+    public abstract class HTTPController
     {
+        public abstract string Name { get; }
 
+        public virtual HttpStatusCode GetAction(HttpListenerContext context)
+        {
+            return HttpStatusCode.NotImplemented;
+        }
+        public virtual HttpStatusCode IndexAction(HttpListenerContext context)
+        {
+            return HttpStatusCode.NotImplemented;
+        }
+        public virtual HttpStatusCode PutAction(HttpListenerContext context)
+        {
+            return HttpStatusCode.NotImplemented;
+        }
+        public virtual HttpStatusCode PostAction(HttpListenerContext context)
+        {
+            return HttpStatusCode.NotImplemented;
+        }
+        public virtual HttpStatusCode DeleteAction(HttpListenerContext context)
+        {
+            return HttpStatusCode.NotImplemented;
+        }
     }
 }
