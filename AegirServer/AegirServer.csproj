@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
+    <Compile Include="IO\Mount\MountPoint.cs" />
     <Compile Include="HTTP\Controller\MountPointController.cs" />
     <Compile Include="HTTP\HTTPController.cs" />
     <Compile Include="HTTP\Controller\FileController.cs" />
@@ -100,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

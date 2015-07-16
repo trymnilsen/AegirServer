@@ -24,6 +24,8 @@ namespace AegirServer.Config
             if(File.Exists(this.FileSource))
             {
                 string fileContent = File.ReadAllText(this.FileSource);
+                //TODO: for now escape
+                fileContent = fileContent.Replace(@"\", @"\\");
                 BaseConfiguration config = JsonConvert.DeserializeObject<BaseConfiguration>(fileContent);
                 return config;
                 //Fooobar
