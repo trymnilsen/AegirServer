@@ -1,0 +1,14 @@
+{
+    "name": "Foobario",
+    "HttpEndpoint": "http://localhost:8080/",
+    "MountPoints": [
+        {
+            "Path": "C:\Users\Trym\testmount2",
+            "Name": "User folder mount",
+        },
+        {
+            "Path": "C:\testfolder",
+            "Name": "Main folder"
+        }
+    ]
+}
