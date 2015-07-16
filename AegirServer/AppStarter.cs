@@ -46,7 +46,7 @@ namespace AegirServer
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
             //Set up ctrl + c handling
-            Console.CancelKeyPress += Console_CancelKeyPress;
+                Console.CancelKeyPress += Console_CancelKeyPress;
             //Start Subsystems
             StartSubsystem(new HTTPModule());
             StartSubsystem(new SimulationModule());
