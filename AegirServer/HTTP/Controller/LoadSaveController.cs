@@ -8,9 +8,6 @@ namespace AegirServer.HTTP.Controller
 {
     public class LoadSaveController : HTTPController
     {
-        public override string Name
-        {
-            get { return "MountPoint"; }
-        }
+
     }
 }
