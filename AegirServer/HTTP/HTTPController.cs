@@ -9,7 +9,7 @@ namespace AegirServer.HTTP
 {
     public abstract class HTTPController
     {
-        public virtual HttpStatusCode GetAction(string[] args)
+        public virtual HttpStatusCode GetAction(HttpListenerContext context, string[] args)
         {
             return HttpStatusCode.NotImplemented;
         }

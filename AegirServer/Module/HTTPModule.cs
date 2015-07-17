@@ -126,7 +126,7 @@ namespace AegirServer.Module
             switch(request.HttpMethod)
             {
                 case "GET":
-                    targetController.GetAction(args);
+                    targetController.GetAction(ctx, args.Skip(1).ToArray());
                     break;
                 default:
                     break;
