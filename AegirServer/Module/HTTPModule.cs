@@ -72,7 +72,7 @@ namespace AegirServer.Module
                             HttpStatusCode status = HttpStatusCode.OK;
                             try
                             {
-                                rstr = this.HandleRequest(ctx.Request);
+                                rstr = this.DispatchRequest(ctx.Request);
                             }
                             catch(HTTPException hex)
                             {
@@ -115,7 +115,7 @@ namespace AegirServer.Module
             connection.Close();
             base.NotifyModuleStopped();
         }
-        private string HandleRequest(HttpListenerRequest request)
+        private string DispatchRequest(HttpListenerRequest request)
         {
             return this.ResponseTest + DateTime.Now.ToLongTimeString();
         }

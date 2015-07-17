@@ -48,10 +48,10 @@ namespace AegirServer.Websocket
             Console.WriteLine("Creating WS on port 8888");
             wsServer = new WebSocketServer("ws://0.0.0.0:8888");
 
-            //Set up postbox
-            this.SetUpPostbox();
             //Set up frame resolver
             this.SetUpFrameResolver();   
+            //Set up postbox
+            this.SetUpPostbox();
         }
         private void SetUpFrameResolver()
         {

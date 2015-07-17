@@ -9,11 +9,8 @@ namespace AegirServer.Websocket
 {
     public class WebsocketFrameResolver
     {
-        private Dictionary<Type, IFrameMapper> frameMappers;
-        public WebsocketFrameResolver()
-        {
-            frameMappers = new Dictionary<Type, IFrameMapper>();
-        }
+        private Dictionary<Type, IFrameMapper> frameMappers = new Dictionary<Type, IFrameMapper>();
+
         public void AddMapper<T> (IFrameMapper mapper) where T : Message
         {
             if(!frameMappers.ContainsKey(typeof(T)))
