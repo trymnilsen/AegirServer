@@ -26,6 +26,7 @@ namespace AegirServer.Module
         {
             this.connection = new HttpListener();
             this.controllers = new Dictionary<String, Type>();
+            this.RegisterController<MountPointController>("mount");
         }
 
         public override void SetConfiguration(BaseConfiguration config)
@@ -65,23 +66,20 @@ namespace AegirServer.Module
                         var ctx = c as HttpListenerContext;
                         try
                         {
-                            string rstr = "";
                             HttpStatusCode status = HttpStatusCode.OK;
                             try
                             {
-                                rstr = this.DispatchRequest(ctx);
+                                this.DispatchRequest(ctx);
                             }
                             catch(HTTPException hex)
                             {
-
+                                ctx.Response.StatusCode = (int)hex.Status;
                             }
                             catch(Exception e)
                             {
-
+                                ctx.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                             }
-                            byte[] buf = Encoding.UTF8.GetBytes(rstr);
-                            ctx.Response.ContentLength64 = buf.Length;
-                            ctx.Response.OutputStream.Write(buf, 0, buf.Length);
+
                         }
                         finally
                         {
