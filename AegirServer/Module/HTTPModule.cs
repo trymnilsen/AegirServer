@@ -17,7 +17,7 @@ namespace AegirServer.Module
     public class HTTPModule : AbstractModule
     {
         public const string NO_ADDRESS = "NOPATH";
-        private List<HTTPController> controllers;
+        private Dictionary<String, Type> controllers;
         private HttpListener connection = new HttpListener();
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
@@ -25,10 +25,7 @@ namespace AegirServer.Module
         public HTTPModule()
         {
             this.connection = new HttpListener();
-            this.controllers = new List<HTTPController>(new HTTPController[] { 
-                new MountPointController(),
-                new FileController()
-            });
+            this.controllers = new Dictionary<String, Type>();
         }
 
         public override void SetConfiguration(BaseConfiguration config)
@@ -72,7 +69,7 @@ namespace AegirServer.Module
                             HttpStatusCode status = HttpStatusCode.OK;
                             try
                             {
-                                rstr = this.DispatchRequest(ctx.Request);
+                                rstr = this.DispatchRequest(ctx);
                             }
                             catch(HTTPException hex)
                             {
@@ -86,7 +83,6 @@ namespace AegirServer.Module
                             ctx.Response.ContentLength64 = buf.Length;
                             ctx.Response.OutputStream.Write(buf, 0, buf.Length);
                         }
-                        catch { } // suppress any exceptions by the writing to response buffer
                         finally
                         {
                             // always close the stream
@@ -115,9 +111,31 @@ namespace AegirServer.Module
             connection.Close();
             base.NotifyModuleStopped();
         }
-        private string DispatchRequest(HttpListenerRequest request)
+        private string DispatchRequest(HttpListenerContext ctx)
         {
+            var request = ctx.Request;
+            string controllerName = request.RawUrl.Substring(1, request.RawUrl.Length - 1);//Remove first slash
+            string[] args = controllerName.Split('/');
+            //Find controller
+            if(!controllers.ContainsKey(args[0]))
+            {
+                throw new HTTPException(HttpStatusCode.NotFound);
+            }
+            HTTPController targetController = Activator.CreateInstance(controllers[args[0]]) as HTTPController;
+            //Dispatch method
+            switch(request.HttpMethod)
+            {
+                case "GET":
+                    targetController.GetAction(args);
+                    break;
+                default:
+                    break;
+            }
             return this.ResponseTest + DateTime.Now.ToLongTimeString();
+        }
+        private void RegisterController<T>(string routeName) where T : HTTPController
+        {
+            this.controllers.Add(routeName, typeof(T));
         }
         private void validateSettings()
         {
