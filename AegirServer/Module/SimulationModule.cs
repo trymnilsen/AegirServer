@@ -87,7 +87,7 @@ namespace AegirServer.Module
 
         private void Update(long deltaTime)
         {
-            Debug.WriteLine("Updating");
+            //Debug.WriteLine("Updating");
             Simulation.StepSimulation(deltaTime);
             //The simulation is complete
             this.Messenger.Publish(new SimulationFrameComplete(Simulation.latestDataSet));

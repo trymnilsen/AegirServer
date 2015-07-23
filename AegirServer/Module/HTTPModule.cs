@@ -32,6 +32,7 @@ namespace AegirServer.Module
         public override void SetConfiguration(BaseConfiguration config)
         {
             this.RootAddress = config.HttpEndpoint;
+            base.SetConfiguration(config);
         }
         public override void Startup()
         {
@@ -66,6 +67,7 @@ namespace AegirServer.Module
                         var ctx = c as HttpListenerContext;
                         try
                         {
+                            SetHeaders(ctx.Response);
                             HttpStatusCode status = HttpStatusCode.OK;
                             try
                             {
@@ -120,16 +122,23 @@ namespace AegirServer.Module
                 throw new HTTPException(HttpStatusCode.NotFound);
             }
             HTTPController targetController = Activator.CreateInstance(controllers[args[0]]) as HTTPController;
+            targetController.SetConfiguration(this.Configuration);
+            targetController.SetContext(ctx);
             //Dispatch method
             switch(request.HttpMethod)
             {
                 case "GET":
-                    targetController.GetAction(ctx, args.Skip(1).ToArray());
+                    targetController.GetAction(args.Skip(1).ToArray());
                     break;
                 default:
                     break;
             }
             return this.ResponseTest + DateTime.Now.ToLongTimeString();
+        }
+        private void SetHeaders(HttpListenerResponse response)
+        {
+            response.Headers.Add(HttpResponseHeader.ContentType, "application/json");
+            response.Headers.Add(HttpResponseHeader.ContentEncoding, "UTF-8");
         }
         private void RegisterController<T>(string routeName) where T : HTTPController
         {

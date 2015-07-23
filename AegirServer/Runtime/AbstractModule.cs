@@ -14,6 +14,7 @@ namespace AegirServer.Runtime
 
     public abstract class AbstractModule
     {
+        public BaseConfiguration Configuration { get; private set; }
         public Dispatcher Dispatcher { get; private set; }
         /// <summary>
         /// Retrieve the messenger assigned to this module
@@ -26,7 +27,6 @@ namespace AegirServer.Runtime
 
         public abstract void Startup();
         public abstract void Run();
-        public abstract void SetConfiguration(BaseConfiguration config);
         public abstract void Stop();
         /// <summary>
         /// Initializes this Module from the work thread
@@ -47,6 +47,10 @@ namespace AegirServer.Runtime
             {
                 stopEvent(this, new EventArgs());
             }
+        }
+        public virtual void SetConfiguration(BaseConfiguration config)
+        {
+            this.Configuration = config;
         }
 
         public delegate void FinishedStopHandler(object sender, EventArgs e);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AegirServer.IO.Mount;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,11 +11,11 @@ namespace AegirServer.HTTP.Controller
 {
     public class MountPointController : HTTPController
     {
-        public override HttpStatusCode GetAction(HttpListenerContext context, string[] args)
+        public override HttpStatusCode GetAction(string[] args)
         {
-            byte[] buf = Encoding.UTF8.GetBytes("foobar");
-            context.Response.ContentLength64 = buf.Length;
-            context.Response.OutputStream.Write(buf, 0, buf.Length);
+            MountPoint[] mountPoints = this.Configuration.MountPoints;
+            string outData = JsonConvert.SerializeObject(mountPoints);
+            this.SetOutput(outData);
             return HttpStatusCode.OK;
         }
     }

@@ -43,7 +43,7 @@ namespace AegirMessenger
             {
                 if (subscriptions.ContainsKey(message.GetType()))
                 {
-                    Debug.WriteLine("Publishing : " + message.ToString());
+                    //Debug.WriteLine("Publishing : " + message.ToString());
                     subscriptions[message.GetType()].SendToPostboxes(message);
                 }
             }
