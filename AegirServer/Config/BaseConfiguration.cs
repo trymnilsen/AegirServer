@@ -11,6 +11,7 @@ namespace AegirServer.Config
     {
         public string Name { get; set; }
         public string HttpEndpoint { get; set; }
+        public string WorkspaceFileName { get; set; }
         public MountPoint[] MountPoints { get; set; }
 
         public BaseConfiguration()
