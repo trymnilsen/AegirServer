@@ -15,6 +15,7 @@ namespace AegirServer.Runtime
     public abstract class AbstractModule
     {
         public BaseConfiguration Configuration { get; private set; }
+        public ServerContext Context { get; private set; }
         public Dispatcher Dispatcher { get; private set; }
         /// <summary>
         /// Retrieve the messenger assigned to this module
@@ -47,6 +48,10 @@ namespace AegirServer.Runtime
             {
                 stopEvent(this, new EventArgs());
             }
+        }
+        public void SetContext(ServerContext context)
+        {
+            this.Context = context;
         }
         public virtual void SetConfiguration(BaseConfiguration config)
         {

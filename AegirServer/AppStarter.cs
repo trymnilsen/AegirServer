@@ -23,6 +23,7 @@ namespace AegirServer
         private BaseConfiguration config;
         private Options options;
         private Messenger messenger;
+        private ServerContext serverContext;
 
         private List<ModuleHost> modHosts;
         /// <summary>
@@ -45,6 +46,8 @@ namespace AegirServer
             ConfigFile configurationFile = new ConfigFile("config.json");
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
+            //Set up context
+            this.serverContext = new ServerContext();
             //Set up ctrl + c handling
                 Console.CancelKeyPress += Console_CancelKeyPress;
             //Start Subsystems
@@ -65,7 +68,7 @@ namespace AegirServer
         private void StartSubsystem(AbstractModule mod)
         {
             Console.WriteLine("Starting: " + mod.ToString());
-            ModuleHost host = new ModuleHost(mod, messenger, this.config);
+            ModuleHost host = new ModuleHost(mod, this.serverContext, messenger, this.config);
             modHosts.Add(host);
             host.Start();
         }

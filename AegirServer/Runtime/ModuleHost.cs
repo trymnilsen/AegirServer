@@ -21,12 +21,13 @@ namespace AegirServer.Runtime
         /// Create a new host for this module
         /// </summary>
         /// <param name="mod">The module to host</param>
-        public ModuleHost(AbstractModule mod, Messenger messenger, BaseConfiguration config)
+        public ModuleHost(AbstractModule mod, ServerContext context, Messenger messenger, BaseConfiguration config)
         {
             this.HostedModule = mod;
             this.ExitHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
             mod.Messenger = messenger;
             mod.SetConfiguration(config);
+            mod.SetContext(context);
             mod.OnFinishedStopping += env_OnFinishedStopping;
         }
 

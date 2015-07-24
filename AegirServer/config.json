@@ -1,6 +1,7 @@
 {
     "name": "Foobario",
     "HttpEndpoint": "http://localhost:8080/",
+    "WorkspaceFileName": "workspace.json",
     "MountPoints": [
       {
         "Path": "C:\Users\Trym\testmount2",
