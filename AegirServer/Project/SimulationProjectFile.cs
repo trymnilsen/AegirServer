@@ -8,5 +8,6 @@ namespace AegirServer.Project
 {
     public class SimulationProjectFile
     {
+
     }
 }

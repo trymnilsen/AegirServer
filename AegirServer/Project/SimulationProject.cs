@@ -11,7 +11,7 @@ namespace AegirServer.Project
 {
     public class SimulationProject
     {
-        private SimulationProjectFile projectFile { get; private set; }
+        private SimulationProjectFile projectFile;
         public EFileAvailability AvailabilityStatus { get; private set; }
         public SimulationProject()
         {

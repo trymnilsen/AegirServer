@@ -47,7 +47,7 @@ namespace AegirServer
             BaseConfiguration config = configurationFile.Load();
             this.config = config;
             //Set up context
-            this.serverContext = new ServerContext();
+            this.serverContext = new ServerContext(config);
             //Set up ctrl + c handling
                 Console.CancelKeyPress += Console_CancelKeyPress;
             //Start Subsystems

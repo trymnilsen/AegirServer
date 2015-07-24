@@ -12,11 +12,12 @@ namespace AegirServer.Project
         private BaseConfiguration configuration;
         private WorkspaceFile workspace_data;
 
-        public SimulationProject[] RecentProjects { get; private set; }
+        public List<SimulationProject> RecentProjects { get; private set; }
         public SimulationProject CurrentProject { get; private set; }
 
         public Workspace(BaseConfiguration config)
         {
+            RecentProjects = new List<SimulationProject>();
             this.configuration = config;
             workspace_data = WorkspaceFile.LoadWorkspace(config.WorkspaceFileName);
         }
@@ -24,7 +25,7 @@ namespace AegirServer.Project
         {
             foreach(string projectPath in workspace_data.RecentProjectsPaths)
             {
-
+                RecentProjects.Add(new SimulationProject(projectPath));
             }
         }
     }
