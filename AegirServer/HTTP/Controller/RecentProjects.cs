@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.Project
+namespace AegirServer.HTTP.Controller
 {
-    public class SimulationProjectFile
+    public class RecentProjects
     {
-        public string Name { get; set; }
     }
 }

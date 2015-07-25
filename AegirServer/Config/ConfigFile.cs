@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AegirServer.IO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,7 @@ namespace AegirServer.Config
         {
             if(File.Exists(this.FileSource))
             {
-                string fileContent = File.ReadAllText(this.FileSource);
+                string fileContent = FileReader.ReadAllWithoutControlCharacters(this.FileSource);
                 //TODO: for now escape
                 fileContent = fileContent.Replace(@"\", @"\\");
                 BaseConfiguration config = JsonConvert.DeserializeObject<BaseConfiguration>(fileContent);

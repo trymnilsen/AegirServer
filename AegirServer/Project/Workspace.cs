@@ -20,12 +20,15 @@ namespace AegirServer.Project
             RecentProjects = new List<SimulationProject>();
             this.configuration = config;
             workspace_data = WorkspaceFile.LoadWorkspace(config.WorkspaceFileName);
+            LoadProjects();
         }
         public void LoadProjects()
         {
             foreach(string projectPath in workspace_data.RecentProjectsPaths)
             {
-                RecentProjects.Add(new SimulationProject(projectPath));
+                SimulationProject project = new SimulationProject();
+                project.Load(projectPath);
+                RecentProjects.Add(project);
             }
         }
     }

@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
+    <Compile Include="HTTP\Controller\RecentProjects.cs" />
     <Compile Include="IO\EFileAvailability.cs" />
+    <Compile Include="IO\FileReader.cs" />
     <Compile Include="IO\Mount\MountPoint.cs" />
     <Compile Include="HTTP\Controller\MountPointController.cs" />
     <Compile Include="HTTP\HTTPController.cs" />
@@ -115,7 +117,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="workspace.json" />
+    <None Include="workspace.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Output\" />

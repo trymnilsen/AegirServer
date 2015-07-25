@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AegirServer.IO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +18,7 @@ namespace AegirServer.Project
         }
         public static WorkspaceFile LoadWorkspace(string path)
         {
-            string fileContent = File.ReadAllText(path);
+            string fileContent = FileReader.ReadAllWithoutControlCharacters(path);
             //TODO: for now escape
             fileContent = fileContent.Replace(@"\", @"\\");
             WorkspaceFile workspace = JsonConvert.DeserializeObject<WorkspaceFile>(fileContent);

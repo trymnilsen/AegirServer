@@ -17,10 +17,15 @@ namespace AegirServer.Project
         {
             AvailabilityStatus = EFileAvailability.NOTSAVED;
         }
-        public SimulationProject(string path)
+        public void Load(string path)
         {
             try
             {
+                if(!File.Exists(path))
+                {
+                    this.AvailabilityStatus = EFileAvailability.NOTFOUND;
+                    return;
+                }
                 string fileContent = File.ReadAllText(path);
                 //TODO: for now escape
                 fileContent = fileContent.Replace(@"\", @"\\");
@@ -28,17 +33,13 @@ namespace AegirServer.Project
                 this.projectFile = project;
                 this.AvailabilityStatus = EFileAvailability.AVAILABLE;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                if(e is UnauthorizedAccessException)
+                if (e is UnauthorizedAccessException)
                 {
                     this.AvailabilityStatus = EFileAvailability.ACCESSERROR;
                 }
-                else if(e is FileNotFoundException)
-                {
-                    this.AvailabilityStatus = EFileAvailability.NOTFOUND;
-                }
-                else if(e is IOException)
+                else if (e is IOException)
                 {
                     this.AvailabilityStatus = EFileAvailability.IOERROR;
                 }
