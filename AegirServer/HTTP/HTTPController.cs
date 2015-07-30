@@ -1,4 +1,6 @@
 ﻿using AegirServer.Config;
+using AegirServer.Runtime;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,101 @@ using System.Threading.Tasks;
 
 namespace AegirServer.HTTP
 {
+    /// <summary>
+    /// Baseclass for all HTTP API controllers
+    /// </summary>
     public abstract class HTTPController
     {
+        /// <summary>
+        /// Configuration of this server
+        /// </summary>
         public BaseConfiguration Configuration { get; private set; }
+        /// <summary>
+        /// The context of this server, containing the workspace and more
+        /// </summary>
+        public ServerContext ServerContext { get; private set; }
+        /// <summary>
+        /// The response object for this request
+        /// </summary>
         protected HttpListenerResponse Response { get; private set; }
+        /// <summary>
+        /// The Request object for this request
+        /// </summary>
         protected HttpListenerRequest Request { get; private set; }
-
-        public virtual HttpStatusCode GetAction(string[] args)
+        /// <summary>
+        /// Called when the request is a GET with params
+        /// </summary>
+        /// <param name="args">the arguments supplied (split by slashes)</param>
+        public virtual void GetAction(string[] args)
         {
-            return HttpStatusCode.NotImplemented;
+            this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
-        public virtual HttpStatusCode IndexAction()
+        /// <summary>
+        /// Called when the request is an Index Action I.E GET without any parameters
+        /// </summary>
+        public virtual void IndexAction()
         {
-            return HttpStatusCode.NotImplemented;
+            this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
-        public virtual HttpStatusCode PutAction()
+        /// <summary>
+        /// Called when the request is a put action
+        /// </summary>
+        public virtual void PutAction()
         {
-            return HttpStatusCode.NotImplemented;
+            this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
-        public virtual HttpStatusCode PostAction()
+        /// <summary>
+        /// Called when the request is a put action
+        /// </summary>
+        public virtual void PostAction()
         {
-            return HttpStatusCode.NotImplemented;
+            this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
-        public virtual HttpStatusCode DeleteAction()
+        /// <summary>
+        /// Called when the request is a delete action
+        /// </summary>
+        public virtual void DeleteAction()
         {
-            return HttpStatusCode.NotImplemented;
+            this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
-        public void SetContext(HttpListenerContext context)
+        /// <summary>
+        /// Set the http listener context for this controller, sets request and response
+        /// </summary>
+        /// <param name="context"></param>
+        public void SetRequest(HttpListenerContext context)
         {
             this.Response = context.Response;
             this.Request = context.Request;
         }
+        /// <summary>
+        /// Set the Server context of this controller
+        /// </summary>
+        /// <param name="context"></param>
+        public void SetServerContext(ServerContext context)
+        {
+            this.ServerContext = context;
+        }
+        /// <summary>
+        /// Set the configuration of this controller
+        /// </summary>
+        /// <param name="config"></param>
         public void SetConfiguration(BaseConfiguration config)
         {
             this.Configuration = config;
+        }
+        /// <summary>
+        /// Set a Response code to be returned
+        /// </summary>
+        /// <param name="status"></param>
+        protected void SetResponseCode(HttpStatusCode status)
+        {
+            this.Response.StatusCode = (int)status;
+        }
+        protected void SetSuccessfulContent(object data)
+        {
+            string outData = JsonConvert.SerializeObject(data);
+            this.SetOutput(outData);
+            this.SetResponseCode(HttpStatusCode.OK);
         }
         protected void SetOutput(string data)
         {

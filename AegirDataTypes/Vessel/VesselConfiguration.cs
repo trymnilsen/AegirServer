@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirMessages.Project
+namespace AegirDataTypes.Vessel
 {
-    class RecentProjectsUpdated
+    public class VesselConfiguration
     {
     }
 }

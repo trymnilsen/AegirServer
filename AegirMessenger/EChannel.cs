@@ -9,6 +9,7 @@ namespace AegirMessenger
     public enum EChannel
     {
         SIMULATION,
-        LOGGIN
+        LOGGING,
+        PROJECT
     }
 }

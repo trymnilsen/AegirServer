@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulation\SimulationStep.cs" />
+    <Compile Include="Vessel\VesselConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

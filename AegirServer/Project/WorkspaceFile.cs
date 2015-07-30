@@ -11,7 +11,7 @@ namespace AegirServer.Project
 {
     public class WorkspaceFile
     {
-        public List<string> RecentProjectsPaths { get; set; }
+        public List<string> ProjectPaths { get; set; }
         public WorkspaceFile()
         {
 

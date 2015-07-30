@@ -13,13 +13,13 @@ namespace AegirServer.Runtime
     public class ServerContext
     {
         private BaseConfiguration config;
-        private Workspace workspace;
+
+        public Workspace Workspace { get; private set; }
 
         public ServerContext(BaseConfiguration config)
         {
             this.config = config;
-            this.workspace = new Workspace(config);
-            
+            this.Workspace = new Workspace(config);
         }
     }
 }

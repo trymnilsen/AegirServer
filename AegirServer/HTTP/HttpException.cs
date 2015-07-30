@@ -2,7 +2,7 @@
 using System.Net;
 using System.Runtime.Serialization;
 
-namespace AegirServer.Module
+namespace AegirServer.HTTP
 {
     public class HTTPException : Exception
     {

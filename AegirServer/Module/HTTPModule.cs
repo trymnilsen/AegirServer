@@ -21,29 +21,45 @@ namespace AegirServer.Module
         private HttpListener connection = new HttpListener();
         private string RootAddress = NO_ADDRESS; //Loaded from config
         private string ResponseTest = "Hello There";
-
+        /// <summary>
+        /// Sets up module from the main thread
+        /// </summary>
         public HTTPModule()
         {
             this.connection = new HttpListener();
             this.controllers = new Dictionary<String, Type>();
+            //Register Controllers
             this.RegisterController<MountPointController>("mount");
+            this.RegisterController<ProjectController>("project");
         }
-
+        /// <summary>
+        /// Set the configuration of this module
+        /// </summary>
+        /// <param name="config"></param>
         public override void SetConfiguration(BaseConfiguration config)
         {
             this.RootAddress = config.HttpEndpoint;
             base.SetConfiguration(config);
         }
+        /// <summary>
+        /// Initialize the module on its own thread
+        /// </summary>
         public override void Startup()
         {
             validateSettings();
             Console.WriteLine("Starting HTTP on " + RootAddress);
             connection.Prefixes.Add(this.RootAddress);
         }
+        /// <summary>
+        /// Stop the HTTP module
+        /// </summary>
         public override void Stop()
         {
             connection.Stop();
         }
+        /// <summary>
+        /// Run the HTTP module
+        /// </summary>
         public override void Run()
         {
             connection.Start();
@@ -71,26 +87,38 @@ namespace AegirServer.Module
                             HttpStatusCode status = HttpStatusCode.OK;
                             try
                             {
+                                //Try to dispatch and catch any errors
                                 this.DispatchRequest(ctx);
                             }
                             catch(HTTPException hex)
                             {
+                                ///A HTTPException can be use to control flow for cases like 404
                                 ctx.Response.StatusCode = (int)hex.Status;
                             }
                             catch(Exception e)
                             {
+                                //Generic error happended
                                 ctx.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                             }
 
                         }
                         finally
                         {
-                            // always close the stream
+                            //Check if there is any content
+                            if(ctx.Response.ContentLength64 == 0 && !HTTPUtil.IsCodeError(ctx.Response.StatusCode))
+                            {
+                                ctx.Response.StatusCode = (int)HttpStatusCode.NoContent;
+                                //For some reason status description is set at the point the 
+                                //status is set for the first time, and then not 
+                                ctx.Response.StatusDescription = "No Content";
+                            }
+                            // close the stream
                             ctx.Response.OutputStream.Close();
                         }
                     }, context);
                 }
             }
+            //Something went wrong
             catch(HttpListenerException hlex)
             {
                 //We get an exception because the GetContext call is considered an 
@@ -111,39 +139,79 @@ namespace AegirServer.Module
             connection.Close();
             base.NotifyModuleStopped();
         }
-        private string DispatchRequest(HttpListenerContext ctx)
+        /// <summary>
+        /// Dispatches a HTTP request the appropriate controller
+        /// </summary>
+        /// <param name="ctx">Http Listener request to dispatch</param>
+        private void DispatchRequest(HttpListenerContext ctx)
         {
             var request = ctx.Request;
             string controllerName = request.RawUrl.Substring(1, request.RawUrl.Length - 1);//Remove first slash
             string[] args = controllerName.Split('/');
+            //normalize arguments
+            args = this.NormalizeArgs(args);
             //Find controller
             if(!controllers.ContainsKey(args[0]))
             {
                 throw new HTTPException(HttpStatusCode.NotFound);
             }
+            //Create Controller
             HTTPController targetController = Activator.CreateInstance(controllers[args[0]]) as HTTPController;
+            //Set values
             targetController.SetConfiguration(this.Configuration);
-            targetController.SetContext(ctx);
+            targetController.SetRequest(ctx);
+            targetController.SetServerContext(this.Context);
             //Dispatch method
             switch(request.HttpMethod)
             {
                 case "GET":
-                    targetController.GetAction(args.Skip(1).ToArray());
+                    //Both Index and Get will get here, if no args = index.. Has args = Get
+                    //First arg is controller name, therefor we need to check for more than one arg
+                    if(args.Length <= 1) { targetController.IndexAction(); }
+                    else { targetController.GetAction(args.Skip(1).ToArray()); }
                     break;
                 default:
                     break;
             }
-            return this.ResponseTest + DateTime.Now.ToLongTimeString();
         }
+        /// <summary>
+        /// Normalizes the arguments (removes empty at the moment)
+        /// </summary>
+        /// <param name="args">an array of arguments provided</param>
+        /// <returns>A normalized/cleaned array of arguments</returns>
+        private string[] NormalizeArgs(string[] args)
+        {
+            List<string> newArgs = new List<string>();
+            for(int i = 0; i<args.Length; i++)
+            {
+                if (args[i] != string.Empty)
+                {
+                    newArgs.Add(args[i]);
+                }
+            }
+            return newArgs.ToArray();
+        }
+        /// <summary>
+        /// Sets common headers on all requests
+        /// </summary>
+        /// <param name="response">Http context reponse</param>
         private void SetHeaders(HttpListenerResponse response)
         {
             response.Headers.Add(HttpResponseHeader.ContentType, "application/json");
             response.Headers.Add(HttpResponseHeader.ContentEncoding, "UTF-8");
         }
+        /// <summary>
+        /// Registers a route for a controller
+        /// </summary>
+        /// <typeparam name="T">Classname of a HTTP control we would like to route to</typeparam>
+        /// <param name="routeName">the routename</param>
         private void RegisterController<T>(string routeName) where T : HTTPController
         {
             this.controllers.Add(routeName, typeof(T));
         }
+        /// <summary>
+        /// Validates configuration settings
+        /// </summary>
         private void validateSettings()
         {
             if(!HttpValidate.ValidateHTTPAddress(this.RootAddress))

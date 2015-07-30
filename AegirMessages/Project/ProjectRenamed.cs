@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AegirMessages.Project
 {
-    class ProjectRenamed
+    public class ProjectRenamed
     {
     }
 }

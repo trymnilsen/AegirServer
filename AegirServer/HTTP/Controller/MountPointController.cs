@@ -1,4 +1,5 @@
 ﻿using AegirServer.IO.Mount;
+using AegirServer.Module;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,20 @@ namespace AegirServer.HTTP.Controller
 {
     public class MountPointController : HTTPController
     {
-        public override HttpStatusCode GetAction(string[] args)
+        public override void IndexAction()
         {
             MountPoint[] mountPoints = this.Configuration.MountPoints;
-            string outData = JsonConvert.SerializeObject(mountPoints);
-            this.SetOutput(outData);
-            return HttpStatusCode.OK;
+            this.SetSuccessfulContent(mountPoints);
+        }
+        public override void GetAction(string[] args)
+        {
+            string idToGet = args[0];
+            MountPoint[] mountPoint = Configuration.MountPoints.Where(x => x.Id.ToString() == idToGet).ToArray();
+            if(mountPoint.Length < 1)
+            {
+                throw new HTTPException(HttpStatusCode.NotFound);
+            }
+            this.SetSuccessfulContent(mountPoint);
         }
     }
 }
