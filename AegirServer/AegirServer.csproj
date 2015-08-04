@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
+    <Compile Include="HTTP\Controller\ConfigurationController.cs" />
     <Compile Include="HTTP\Controller\ProjectController.cs" />
     <Compile Include="HTTP\HTTPUtil.cs" />
     <Compile Include="IO\EFileAvailability.cs" />

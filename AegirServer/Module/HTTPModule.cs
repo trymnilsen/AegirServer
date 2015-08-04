@@ -31,6 +31,7 @@ namespace AegirServer.Module
             //Register Controllers
             this.RegisterController<MountPointController>("mount");
             this.RegisterController<ProjectController>("project");
+            this.RegisterController<ConfigurationController>("config");
         }
         /// <summary>
         /// Set the configuration of this module

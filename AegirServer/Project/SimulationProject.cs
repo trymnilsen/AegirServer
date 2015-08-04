@@ -13,12 +13,22 @@ namespace AegirServer.Project
     public class SimulationProject
     {
         private SimulationProjectFile projectFile;
+        private static string NO_PROJECT_NAME = "ERR: COULD NOT LOAD PROJECT";
 
         public string ProjectPath { get; private set; }
         public DateTime LastModified { get; private set; }
         public DateTime Created { get; private set; }
         public VesselConfiguration Vessel { get; private set; }
         public EFileAvailability AvailabilityStatus { get; private set; }
+        public string Name {
+            get {
+                if(this.AvailabilityStatus == EFileAvailability.AVAILABLE)
+                {
+                    return this.projectFile.Name;
+                }
+                return NO_PROJECT_NAME;
+            }
+        }
         public Guid GUID { get; private set; }
         public SimulationProject()
         {

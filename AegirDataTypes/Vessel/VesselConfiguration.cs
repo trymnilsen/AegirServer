@@ -8,5 +8,7 @@ namespace AegirDataTypes.Vessel
 {
     public class VesselConfiguration
     {
+        public double Width { get; private set; }
+        public double Height { get; private set; }
     }
 }
