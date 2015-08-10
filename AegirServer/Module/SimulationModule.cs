@@ -39,7 +39,7 @@ namespace AegirServer.Module
             long nextTime = 0;
             long lastUpdate = 0;
             long deltaTime = 0;
-            frameTime = 33;
+            frameTime = 5000;
             isRunning = true;
             while(isRunning)
             {
