@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Scene
 {
-    class Node
+    public class Node
     {
+        public Node Parent { get; private set; }
+        public List<Node> Children { get; private set; }
+        public Transformation Transformation { get; set; }
     }
 }
