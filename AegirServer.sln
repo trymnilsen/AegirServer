@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirServer", "AegirServer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirSimulation", "AegirSimulation\AegirSimulation.csproj", "{939B417A-89BD-41E3-95DF-1E04E5E235B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirGeodesy", "AegirGeodesy\AegirGeodesy.csproj", "{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirNMEA", "AegirNMEA\AegirNMEA.csproj", "{5CEF24DD-51BF-4046-89EA-A034E42FB947}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirLogging", "AegirLogging\AegirLogging.csproj", "{EE50156F-855A-4639-8FBF-E6252FF8D58F}"
@@ -20,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirDataTypes", "AegirDataTypes\AegirDataTypes.csproj", "{2F19C223-91B4-418F-849B-5411831F3993}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirMessenger", "AegirMessenger\AegirMessenger.csproj", "{790BC77E-85B2-448E-A39E-38B7FCD50C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirMath", "AegirMath\AegirMath.csproj", "{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939B417A-89BD-41E3-95DF-1E04E5E235B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34E2BBE0-B917-4CD5-B5FC-652E3D875C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEF24DD-51BF-4046-89EA-A034E42FB947}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{790BC77E-85B2-448E-A39E-38B7FCD50C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{790BC77E-85B2-448E-A39E-38B7FCD50C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{790BC77E-85B2-448E-A39E-38B7FCD50C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

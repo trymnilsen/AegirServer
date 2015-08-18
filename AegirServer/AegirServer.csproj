@@ -98,7 +98,7 @@
     <Compile Include="Module\NMEAOutputModule.cs" />
     <Compile Include="Module\SimulationModule.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Project\SimulationProject.cs" />
+    <Compile Include="Runtime\SimulationProject.cs" />
     <Compile Include="Project\SimulationProjectFile.cs" />
     <Compile Include="Project\Workspace.cs" />
     <Compile Include="Project\WorkspaceFile.cs" />
@@ -147,10 +147,6 @@
     <ProjectReference Include="..\AegirDataTypes\AegirDataTypes.csproj">
       <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
       <Name>AegirDataTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AegirGeodesy\AegirGeodesy.csproj">
-      <Project>{34e2bbe0-b917-4cd5-b5fc-652e3d875c5e}</Project>
-      <Name>AegirGeodesy</Name>
     </ProjectReference>
     <ProjectReference Include="..\AegirLogging\AegirLogging.csproj">
       <Project>{ee50156f-855a-4639-8fbf-e6252ff8d58f}</Project>
