@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirSimulation.Scene
+namespace AegirServer.Module
 {
-    public class Scenegraph
+    class SearchCrawlerModule
     {
-        public void RunComponents()
-        {
-
-        }
     }
 }

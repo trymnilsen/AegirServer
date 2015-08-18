@@ -43,6 +43,7 @@
     <Compile Include="Project\NewProject.cs" />
     <Compile Include="Project\ProjectRenamed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulation\NewSimulationCommand.cs" />
     <Compile Include="Simulation\SimulationFrameComplete.cs" />
   </ItemGroup>
   <ItemGroup>

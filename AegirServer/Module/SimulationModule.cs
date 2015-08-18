@@ -1,10 +1,14 @@
 ﻿using AegirDataTypes.Simulation;
 using AegirMessages.Simulation;
+using AegirMessenger;
 using AegirServer.Runtime;
+using AegirSimulation.Command;
 using AegirSimulation.Scene;
 using AegirSimulation.Simulation;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -17,6 +21,8 @@ namespace AegirServer.Module
     {
         public Scenegraph Scene { get; private set; }
         public SimulationEngine Simulation { get; private set; }
+
+        private ConcurrentBag<SimulationCommand> nextStepCommands;
 
         private Stopwatch stopwatch;
         private bool isRunning;
@@ -79,6 +85,10 @@ namespace AegirServer.Module
         {
             Debug.WriteLine("TODO add config to Simulation");
         }
+        private void OnNewCommand(Message message)
+        {
+            
+        }
 
         public override void Stop()
         {
@@ -88,7 +98,9 @@ namespace AegirServer.Module
         private void Update(long deltaTime)
         {
             //Debug.WriteLine("Updating");
-            Simulation.StepSimulation(deltaTime);
+            //Get the commands
+            SimulationCommand[] commands = this.nextStepCommands.ToArray();
+            Simulation.StepSimulation(deltaTime, commands);
             //The simulation is complete
             this.Messenger.Publish(new SimulationFrameComplete(Simulation.latestDataSet));
         }

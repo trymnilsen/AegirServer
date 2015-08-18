@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\SimulationCommand.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\Data\Ship.cs" />
     <Compile Include="Components\Movement\FollowWaypoint.cs" />
