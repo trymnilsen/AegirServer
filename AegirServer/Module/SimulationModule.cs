@@ -99,8 +99,13 @@ namespace AegirServer.Module
         {
             //Debug.WriteLine("Updating");
             //Get the commands
-            SimulationCommand[] commands = this.nextStepCommands.ToArray();
-            Simulation.StepSimulation(deltaTime, commands);
+            SimulationCommand[] commands = new SimulationCommand[0];
+            if(this.nextStepCommands != null)
+            {
+                commands = this.nextStepCommands.ToArray();
+            }
+
+            Simulation.StepSimulation(new SimulationTime(), commands);
             //The simulation is complete
             this.Messenger.Publish(new SimulationFrameComplete(Simulation.latestDataSet));
         }

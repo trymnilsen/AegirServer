@@ -107,6 +107,7 @@
     <Compile Include="Runtime\AbstractModule.cs" />
     <Compile Include="Module\WebsocketModule.cs" />
     <Compile Include="Runtime\ServerContext.cs" />
+    <Compile Include="Service\VesselConfigurationService.cs" />
     <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
     <Compile Include="Websocket\IFrameMapper.cs" />
     <Compile Include="Websocket\ISerializeableFrame.cs" />

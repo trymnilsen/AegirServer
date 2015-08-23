@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Components.Movement
 {
-    class InputTravel
+    public class VesselDynamics
     {
+
     }
 }

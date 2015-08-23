@@ -20,18 +20,18 @@ namespace AegirSimulation.Simulation
             latestDataSet = new SimulationStep();
         }
 
-        public void StepSimulation(long deltaTime, SimulationCommand[] commands)
+        public void StepSimulation(SimulationTime deltaTime, SimulationCommand[] commands)
         {
             //Run precomponents of all commands
             for (int i = 0; i < commands.Length; i++)
             {
-                commands[i].PreComponentCalcuation(this.Scene);
+                commands[i].PreComponentCalcuation(this.Scene, deltaTime);
             }
             this.Scene.RunComponents();
             //Run precomponents of all commands
             for (int i = 0; i < commands.Length; i++)
             {
-                commands[i].PostComponentCalculation(this.Scene);
+                commands[i].PostComponentCalculation(this.Scene, deltaTime);
             }
         }
     }

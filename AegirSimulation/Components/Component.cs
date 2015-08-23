@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Components
 {
-    class Component
+    public class Component
     {
     }
 }

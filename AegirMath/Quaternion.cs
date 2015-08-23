@@ -114,13 +114,13 @@ namespace OpenTK
         [Obsolete("Use Xyz property instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         [XmlIgnore]
-        [CLSCompliant(false)]
+        
         public Vector3 XYZ { get { return Xyz; } set { Xyz = value; } }
 
         /// <summary>
         /// Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
         /// </summary>
-        [CLSCompliant(false)]
+        
         public Vector3 Xyz { get { return xyz; } set { xyz = value; } }
 
         #pragma warning restore 3005

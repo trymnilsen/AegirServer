@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using AegirDataTypes.Vessel;
+using AegirServer.Service;
 
 namespace AegirServer.Project
 {
@@ -35,6 +36,12 @@ namespace AegirServer.Project
             AvailabilityStatus = EFileAvailability.NOTSAVED;
             GUID = Guid.NewGuid();
             Created = DateTime.Now;
+            //For now we create the default project with a dummy vessel
+
+            var vesselService = new VesselConfigurationService();
+            Random r = new Random();
+            int vesselNum = r.Next(VesselConfigurationService.Vessels.Count);
+            this.Vessel = VesselConfigurationService.Vessels[vesselNum];
         }
         public void Load(string path)
         {

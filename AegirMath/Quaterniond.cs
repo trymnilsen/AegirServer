@@ -112,7 +112,7 @@ namespace OpenTK
         /// Gets or sets an OpenTK.Vector3d with the X, Y and Z components of this instance.
         /// </summary>
         [Obsolete("Use Xyz property instead.")]
-        [CLSCompliant(false)]
+        
         [EditorBrowsable(EditorBrowsableState.Never)]
         [XmlIgnore]
         public Vector3d XYZ { get { return Xyz; } set { Xyz = value; } }

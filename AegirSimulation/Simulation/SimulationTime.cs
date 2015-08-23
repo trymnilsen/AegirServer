@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Simulation
 {
-    class DeltaTime
+    public class SimulationTime
     {
+        double DeltaTime { get; set; }
+        double PlaybackScale { get; set; }
     }
 }

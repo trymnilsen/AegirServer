@@ -1,5 +1,6 @@
 ﻿using AegirServer.Config;
 using AegirServer.Project;
+using AegirServer.Service;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,15 @@ namespace AegirServer.Runtime
     {
         private BaseConfiguration config;
 
+        public VesselConfigurationService VesselConfigs { get; private set; }
+
         public Workspace Workspace { get; private set; }
 
         public ServerContext(BaseConfiguration config)
         {
             this.config = config;
             this.Workspace = new Workspace(config);
+            this.VesselConfigs = new VesselConfigurationService();
         }
     }
 }

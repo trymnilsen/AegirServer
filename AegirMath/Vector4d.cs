@@ -201,7 +201,7 @@ namespace OpenTK
 
         /// <summary>Add the Vector passed as parameter to this instance.</summary>
         /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Add() method instead.")]
         public void Add(Vector4d right)
         {
@@ -213,7 +213,7 @@ namespace OpenTK
 
         /// <summary>Add the Vector passed as parameter to this instance.</summary>
         /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Add() method instead.")]
         public void Add(ref Vector4d right)
         {
@@ -229,7 +229,7 @@ namespace OpenTK
 
         /// <summary>Subtract the Vector passed as parameter from this instance.</summary>
         /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Subtract() method instead.")]
         public void Sub(Vector4d right)
         {
@@ -241,7 +241,7 @@ namespace OpenTK
 
         /// <summary>Subtract the Vector passed as parameter from this instance.</summary>
         /// <param name="right">Right operand. This parameter is only read from.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Subtract() method instead.")]
         public void Sub(ref Vector4d right)
         {
@@ -404,7 +404,7 @@ namespace OpenTK
 
         /// <summary>Scales this instance by the given parameter.</summary>
         /// <param name="scale">The scaling of the individual components.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Multiply() method instead.")]
         public void Scale(Vector4d scale)
         {
@@ -416,7 +416,7 @@ namespace OpenTK
 
         /// <summary>Scales this instance by the given parameter.</summary>
         /// <param name="scale">The scaling of the individual components.</param>
-        [CLSCompliant(false)]
+        
         [Obsolete("Use static Multiply() method instead.")]
         public void Scale(ref Vector4d scale)
         {
@@ -1552,7 +1552,7 @@ namespace OpenTK
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
-        [CLSCompliant(false)]
+        
         unsafe public static explicit operator double*(Vector4d v)
         {
             return &v.X;

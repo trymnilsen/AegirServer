@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\SimulationCommand.cs" />
+    <Compile Include="Command\Transform\NudgeCommand.cs" />
     <Compile Include="Components\Component.cs" />
-    <Compile Include="Components\Data\Ship.cs" />
     <Compile Include="Components\Movement\FollowWaypoint.cs" />
-    <Compile Include="Components\Movement\InputTravel.cs" />
     <Compile Include="Components\Movement\NMEAInput.cs" />
+    <Compile Include="Components\Movement\VesselDynamics.cs" />
     <Compile Include="Components\Noise\PerlinNoise.cs" />
     <Compile Include="Components\Water\Buoyancy.cs" />
     <Compile Include="Pipe\PipelineProvider.cs" />
@@ -54,7 +54,7 @@
     <Compile Include="Scene\Node.cs" />
     <Compile Include="Scene\Scenegraph.cs" />
     <Compile Include="Scene\Transformation.cs" />
-    <Compile Include="Simulation\DeltaTime.cs" />
+    <Compile Include="Simulation\SimulationTime.cs" />
     <Compile Include="Simulation\SimulationEngine.cs" />
     <Compile Include="Simulation\Water\BuoyancyHelper.cs" />
     <Compile Include="Simulation\Water\WaterRegion.cs" />
@@ -67,10 +67,17 @@
       <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
       <Name>AegirDataTypes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AegirMath\AegirMath.csproj">
+      <Project>{5fb60e8e-f2d4-480f-8ecf-f86b061d27a6}</Project>
+      <Name>AegirMath</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AegirMessages\AegirMessages.csproj">
       <Project>{c9a7bfd4-aecb-4bf2-bfeb-8d057357a5f7}</Project>
       <Name>AegirMessages</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

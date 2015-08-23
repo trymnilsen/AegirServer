@@ -105,7 +105,7 @@ namespace OpenTK
         /// The new Half2 instance will convert the Vector2 into 16-bit half-precision floating-point.
         /// </summary>
         /// <param name="v">OpenTK.Vector2</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(Vector2 v)
         {
             X = new Half(v.X);
@@ -117,7 +117,7 @@ namespace OpenTK
         /// </summary>
         /// <param name="v">OpenTK.Vector2</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(Vector2 v, bool throwOnError)
         {
             X = new Half(v.X, throwOnError);
@@ -150,7 +150,7 @@ namespace OpenTK
         /// The new Half2 instance will convert the Vector2d into 16-bit half-precision floating-point.
         /// </summary>
         /// <param name="v">OpenTK.Vector2d</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(Vector2d v)
         {
             X = new Half(v.X);
@@ -162,7 +162,7 @@ namespace OpenTK
         /// </summary>
         /// <param name="v">OpenTK.Vector2d</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(Vector2d v, bool throwOnError)
         {
             X = new Half(v.X, throwOnError);
@@ -174,7 +174,7 @@ namespace OpenTK
         /// This is the faster constructor.
         /// </summary>
         /// <param name="v">OpenTK.Vector2d</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(ref Vector2d v)
         {
             X = new Half(v.X);
@@ -186,7 +186,7 @@ namespace OpenTK
         /// </summary>
         /// <param name="v">OpenTK.Vector2d</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
-        [CLSCompliant(false)]
+        
         public Vector2h(ref Vector2d v, bool throwOnError)
         {
             X = new Half(v.X, throwOnError);

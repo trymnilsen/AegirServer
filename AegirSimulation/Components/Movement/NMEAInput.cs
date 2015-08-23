@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Components.Movement
 {
-    class NMEAInput
+    public class NMEAInput
     {
     }
 }

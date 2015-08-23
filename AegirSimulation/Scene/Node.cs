@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AegirSimulation.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace AegirSimulation.Scene
         public Node Parent { get; private set; }
         public List<Node> Children { get; private set; }
         public Transformation Transformation { get; set; }
+        public List<Component> Components { get; private set; }
     }
 }
