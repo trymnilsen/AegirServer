@@ -3,6 +3,7 @@ using AegirServer.Runtime;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -56,7 +57,7 @@ namespace AegirServer.HTTP
         /// <summary>
         /// Called when the request is a put action
         /// </summary>
-        public virtual void PostAction()
+        public virtual void PostAction(Stream data)
         {
             this.SetResponseCode(HttpStatusCode.NotImplemented);
         }

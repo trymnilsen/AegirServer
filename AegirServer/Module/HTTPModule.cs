@@ -152,6 +152,10 @@ namespace AegirServer.Module
             string[] args = controllerName.Split('/');
             //normalize arguments
             args = this.NormalizeArgs(args);
+            if(args.Length == 0)
+            {
+                throw new HTTPException(HttpStatusCode.OK);
+            }
             //Find controller
             if(!controllers.ContainsKey(args[0]))
             {
@@ -171,6 +175,9 @@ namespace AegirServer.Module
                     //First arg is controller name, therefor we need to check for more than one arg
                     if(args.Length <= 1) { targetController.IndexAction(); }
                     else { targetController.GetAction(args.Skip(1).ToArray()); }
+                    break;
+                case "POST":
+                   // targetController.PostAction(ctx.Request.InputStream);
                     break;
                 default:
                     break;
@@ -201,6 +208,9 @@ namespace AegirServer.Module
         {
             response.Headers.Add(HttpResponseHeader.ContentType, "application/json");
             response.Headers.Add(HttpResponseHeader.ContentEncoding, "UTF-8");
+            response.AppendHeader("Access-Control-Allow-Origin", "*");
+            response.AppendHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
         }
         /// <summary>
         /// Registers a route for a controller

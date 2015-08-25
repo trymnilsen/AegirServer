@@ -64,9 +64,6 @@ namespace AegirServer.HTTP.Controller
             }
             return projects;
         }
-        public override void PostAction()
-        {
-            base.PostAction();
-        }
+
     }
 }
