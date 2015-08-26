@@ -1,4 +1,6 @@
-﻿using AegirMessages.Project;
+﻿using AegirDataTypes.Vessel;
+using AegirDataTypes.Workspace;
+using AegirMessages.Project;
 using AegirServer.Config;
 using System;
 using System.Collections.Generic;
@@ -45,9 +47,11 @@ namespace AegirServer.Project
         /// <summary>
         /// Creates a new project and sets it as the current one, also updates the recent projects list
         /// </summary>
-        public void CreateProject()
+        public void CreateProject(ProjectData details)
         {
-            SimulationProject newProject = new SimulationProject();
+            VesselConfiguration vessel = new VesselConfiguration(details.VesselName, details.VesselWidth, details.VesselLength);
+            SimulationProject newProject = new SimulationProject(details.Name,vessel);
+            Projects.Add(newProject);
 
         }
         

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using AegirDataTypes.Vessel;
 using AegirServer.Service;
+using AegirDataTypes.Workspace;
 
 namespace AegirServer.Project
 {
@@ -15,7 +16,7 @@ namespace AegirServer.Project
     {
         private SimulationProjectFile projectFile;
         private static string NO_PROJECT_NAME = "ERR: COULD NOT LOAD PROJECT";
-
+        private string projectName;
         public string ProjectPath { get; private set; }
         public DateTime LastModified { get; private set; }
         public DateTime Created { get; private set; }
@@ -25,7 +26,11 @@ namespace AegirServer.Project
             get {
                 if(this.AvailabilityStatus == EFileAvailability.AVAILABLE)
                 {
-                    return this.projectFile.Name;
+                    return projectFile.Name;
+                }
+                else if(this.AvailabilityStatus == EFileAvailability.NOTSAVED)
+                {
+                    return projectName;
                 }
                 return NO_PROJECT_NAME;
             }
@@ -42,6 +47,14 @@ namespace AegirServer.Project
             Random r = new Random();
             int vesselNum = r.Next(VesselConfigurationService.Vessels.Count);
             this.Vessel = VesselConfigurationService.Vessels[vesselNum];
+        }
+        public SimulationProject(string name, VesselConfiguration vesselConfig)
+        {
+            projectName = name;
+            AvailabilityStatus = EFileAvailability.NOTSAVED;
+            GUID = Guid.NewGuid();
+            Created = DateTime.Now;
+            Vessel = vesselConfig;
         }
         public void Load(string path)
         {

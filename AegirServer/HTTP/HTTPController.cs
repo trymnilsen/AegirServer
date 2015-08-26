@@ -57,7 +57,7 @@ namespace AegirServer.HTTP
         /// <summary>
         /// Called when the request is a put action
         /// </summary>
-        public virtual void PostAction(Stream data)
+        public virtual void PostAction()
         {
             this.SetResponseCode(HttpStatusCode.NotImplemented);
         }
@@ -112,6 +112,20 @@ namespace AegirServer.HTTP
             byte[] buf = Encoding.UTF8.GetBytes(data);
             this.Response.ContentLength64 = buf.Length;
             this.Response.OutputStream.Write(buf, 0, buf.Length);
+        }
+        protected string GetTextData(HttpListenerRequest request)
+        {
+            if (!request.HasEntityBody)
+            {
+                return null;
+            }
+            using (System.IO.Stream body = request.InputStream) // here we have data
+            {
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(body, request.ContentEncoding))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
     }
 }

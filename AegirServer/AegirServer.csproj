@@ -98,7 +98,7 @@
     <Compile Include="Module\NMEAOutputModule.cs" />
     <Compile Include="Module\SimulationModule.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Runtime\SimulationProject.cs" />
+    <Compile Include="Project\SimulationProject.cs" />
     <Compile Include="Project\SimulationProjectFile.cs" />
     <Compile Include="Project\Workspace.cs" />
     <Compile Include="Project\WorkspaceFile.cs" />
@@ -107,6 +107,7 @@
     <Compile Include="Runtime\AbstractModule.cs" />
     <Compile Include="Module\WebsocketModule.cs" />
     <Compile Include="Runtime\ServerContext.cs" />
+    <Compile Include="Service\ProjectService.cs" />
     <Compile Include="Service\VesselConfigurationService.cs" />
     <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
     <Compile Include="Websocket\IFrameMapper.cs" />

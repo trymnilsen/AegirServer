@@ -177,7 +177,7 @@ namespace AegirServer.Module
                     else { targetController.GetAction(args.Skip(1).ToArray()); }
                     break;
                 case "POST":
-                   // targetController.PostAction(ctx.Request.InputStream);
+                    targetController.PostAction();
                     break;
                 default:
                     break;

@@ -1,10 +1,14 @@
 ﻿using AegirServer.Project;
+using AegirDataTypes.Workspace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace AegirServer.HTTP.Controller
 {
@@ -45,6 +49,13 @@ namespace AegirServer.HTTP.Controller
             }
             this.SetSuccessfulContent(projects);
         }
+        public override void PostAction()
+        {
+            string postData = GetTextData(Request);
+            ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(postData);
+            Workspace workspace = ServerContext.Workspace;
+            workspace.CreateProject(projectData);
+        }
         private SimulationProject[] GetByVessel(string guid)
         {
             var projects = ServerContext.Workspace.Projects.Where(x => x.Vessel.Id.ToString() == guid).ToArray();
@@ -64,6 +75,7 @@ namespace AegirServer.HTTP.Controller
             }
             return projects;
         }
+
 
     }
 }
