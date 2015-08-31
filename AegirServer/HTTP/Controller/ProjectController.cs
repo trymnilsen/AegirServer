@@ -14,13 +14,12 @@ namespace AegirServer.HTTP.Controller
 {
     public class ProjectController : HTTPController
     {
-        private List<string> identifiers;
+        private Dictionary<string, Func<string, SimulationProject[]>> identifiers;
 
         public ProjectController()
         {
-            this.identifiers = new List<string>();
-            this.identifiers.Add("vesselguid");
-            this.identifiers.Add("vesselname");
+            this.identifiers = new Dictionary<string, Func<string, SimulationProject[]>>();
+            this.identifiers.Add("projectname",this.GetByName);
         }
         public override void IndexAction()
         {
@@ -31,16 +30,21 @@ namespace AegirServer.HTTP.Controller
         {
             string idToGet = args[0];
             SimulationProject[] projects = null;
-            if (this.identifiers.Contains(idToGet) && args.Length>1)
+            //We only allow one query parameter for now
+            if (Request.QueryString.Count > 0)
             {
-                idToGet = args[1];
-                if(args[0] == "vessel")
+                if(this.identifiers.ContainsKey(Request.QueryString.Keys[0]))
                 {
-                    projects = GetByVessel(args[1]);
+                    string[] paramValues = Request.QueryString.GetValues(0);
+                    if(paramValues.Length>0)
+                    {
+                        idToGet = paramValues[0];
+                    }
+                    projects = this.identifiers[Request.QueryString.Keys[0]](idToGet);
                 }
                 else
                 {
-                    projects = GetByGuid(args[1]);
+                    throw new HTTPException(HttpStatusCode.BadRequest);
                 }
             }
             else
@@ -55,6 +59,16 @@ namespace AegirServer.HTTP.Controller
             ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(postData);
             Workspace workspace = ServerContext.Workspace;
             workspace.CreateProject(projectData);
+        }
+        private SimulationProject[] GetByName(string name)
+        {
+
+            var projects = ServerContext.Workspace.Projects.Where(x => x.Name.ToLower() == name.ToLower()).ToArray();
+            if (projects.Length < 1)
+            {
+                throw new HTTPException(HttpStatusCode.NotFound);
+            }
+            return projects;
         }
         private SimulationProject[] GetByVessel(string guid)
         {

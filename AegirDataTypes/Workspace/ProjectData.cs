@@ -8,9 +8,7 @@ namespace AegirDataTypes.Workspace
 {
     public class ProjectData
     {
-        public string Name { get; set; }
-        public string VesselName { get; set; }
-        public double VesselLength { get; set; }
-        public double VesselWidth { get; set; }
+        public string ProjectName { get; set; }
+        public string VesselId { get; set; }
     }
 }

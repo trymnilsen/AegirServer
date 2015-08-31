@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirServer", "AegirServer\AegirServer.csproj", "{CC6F63FF-98CF-4BE0-A711-9337F41E702E}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirMessenger", "AegirMessenger\AegirMessenger.csproj", "{790BC77E-85B2-448E-A39E-38B7FCD50C2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirMath", "AegirMath\AegirMath.csproj", "{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AegirTests", "AegirTests\AegirTests.csproj", "{BAD83149-7323-4031-9C50-9F233B856146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB60E8E-F2D4-480F-8ECF-F86B061D27A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD83149-7323-4031-9C50-9F233B856146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD83149-7323-4031-9C50-9F233B856146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD83149-7323-4031-9C50-9F233B856146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD83149-7323-4031-9C50-9F233B856146}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

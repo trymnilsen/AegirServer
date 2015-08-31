@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAD83149-7323-4031-9C50-9F233B856146}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AegirTests</RootNamespace>
+    <AssemblyName>AegirTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Http\ProjectController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AegirDataTypes\AegirDataTypes.csproj">
+      <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
+      <Name>AegirDataTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirLogging\AegirLogging.csproj">
+      <Project>{ee50156f-855a-4639-8fbf-e6252ff8d58f}</Project>
+      <Name>AegirLogging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirMath\AegirMath.csproj">
+      <Project>{5fb60e8e-f2d4-480f-8ecf-f86b061d27a6}</Project>
+      <Name>AegirMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirMessages\AegirMessages.csproj">
+      <Project>{c9a7bfd4-aecb-4bf2-bfeb-8d057357a5f7}</Project>
+      <Name>AegirMessages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirMessenger\AegirMessenger.csproj">
+      <Project>{790bc77e-85b2-448e-a39e-38b7fcd50c2a}</Project>
+      <Name>AegirMessenger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirNMEA\AegirNMEA.csproj">
+      <Project>{5cef24dd-51bf-4046-89ea-a034e42fb947}</Project>
+      <Name>AegirNMEA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirServer\AegirServer.csproj">
+      <Project>{cc6f63ff-98cf-4be0-a711-9337f41e702e}</Project>
+      <Name>AegirServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirSimulation\AegirSimulation.csproj">
+      <Project>{939b417a-89bd-41e3-95df-1e04e5e235b0}</Project>
+      <Name>AegirSimulation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirValidate\AegirValidate.csproj">
+      <Project>{27e7b3cf-6758-4fd7-af83-89a2dd3aa68f}</Project>
+      <Name>AegirValidate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

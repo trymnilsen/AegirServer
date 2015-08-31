@@ -41,6 +41,7 @@ namespace AegirServer.Project
             AvailabilityStatus = EFileAvailability.NOTSAVED;
             GUID = Guid.NewGuid();
             Created = DateTime.Now;
+            LastModified = DateTime.Now;
             //For now we create the default project with a dummy vessel
 
             var vesselService = new VesselConfigurationService();

@@ -2,6 +2,7 @@
 using AegirDataTypes.Workspace;
 using AegirMessages.Project;
 using AegirServer.Config;
+using AegirServer.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,8 +50,9 @@ namespace AegirServer.Project
         /// </summary>
         public void CreateProject(ProjectData details)
         {
-            VesselConfiguration vessel = new VesselConfiguration(details.VesselName, details.VesselWidth, details.VesselLength);
-            SimulationProject newProject = new SimulationProject(details.Name,vessel);
+            var vessel = VesselConfigurationService.Vessels[0];
+
+            SimulationProject newProject = new SimulationProject(details.ProjectName,vessel);
             Projects.Add(newProject);
 
         }

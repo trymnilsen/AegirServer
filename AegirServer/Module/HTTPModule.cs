@@ -6,6 +6,7 @@ using AegirServer.Runtime;
 using AegirValidate;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -149,6 +150,7 @@ namespace AegirServer.Module
         {
             var request = ctx.Request;
             string controllerName = request.RawUrl.Substring(1, request.RawUrl.Length - 1);//Remove first slash
+            Debug.WriteLine("Controller Name"+controllerName);
             string[] args = controllerName.Split('/');
             //normalize arguments
             args = this.NormalizeArgs(args);
@@ -167,6 +169,7 @@ namespace AegirServer.Module
             targetController.SetConfiguration(this.Configuration);
             targetController.SetRequest(ctx);
             targetController.SetServerContext(this.Context);
+            //Check if the last param starts with a questionmark, set as query params
             //Dispatch method
             switch(request.HttpMethod)
             {
