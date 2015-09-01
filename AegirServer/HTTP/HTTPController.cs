@@ -101,11 +101,11 @@ namespace AegirServer.HTTP
         {
             this.Response.StatusCode = (int)status;
         }
-        protected void SetSuccessfulContent(object data)
+        protected void SetSuccessfulContent(object data, HttpStatusCode code)
         {
             string outData = JsonConvert.SerializeObject(data);
             this.SetOutput(outData);
-            this.SetResponseCode(HttpStatusCode.OK);
+            this.SetResponseCode(code);
         }
         protected void SetOutput(string data)
         {

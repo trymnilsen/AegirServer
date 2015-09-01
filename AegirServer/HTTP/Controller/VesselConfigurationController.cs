@@ -11,7 +11,7 @@ namespace AegirServer.HTTP.Controller
     {
         public override void IndexAction()
         {
-            this.SetSuccessfulContent(VesselConfigurationService.Vessels);
+            this.SetSuccessfulContent(VesselConfigurationService.Vessels,System.Net.HttpStatusCode.OK);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace AegirServer.HTTP.Controller
     {
         public override void IndexAction()
         {
-            this.SetSuccessfulContent(this.Configuration);
+            this.SetSuccessfulContent(this.Configuration,System.Net.HttpStatusCode.OK);
         }
     }
 }

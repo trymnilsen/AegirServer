@@ -15,7 +15,7 @@ namespace AegirServer.HTTP.Controller
         public override void IndexAction()
         {
             MountPoint[] mountPoints = this.Configuration.MountPoints;
-            this.SetSuccessfulContent(mountPoints);
+            this.SetSuccessfulContent(mountPoints,HttpStatusCode.OK);
         }
         public override void GetAction(string[] args)
         {
@@ -25,7 +25,7 @@ namespace AegirServer.HTTP.Controller
             {
                 throw new HTTPException(HttpStatusCode.NotFound);
             }
-            this.SetSuccessfulContent(mountPoint);
+            this.SetSuccessfulContent(mountPoint, HttpStatusCode.OK);
         }
     }
 }

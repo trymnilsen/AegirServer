@@ -24,7 +24,7 @@ namespace AegirServer.HTTP.Controller
         public override void IndexAction()
         {
             var projects = ServerContext.Workspace.Projects;
-            this.SetSuccessfulContent(projects);
+            this.SetSuccessfulContent(projects, HttpStatusCode.OK);
         }
         public override void GetAction(string[] args)
         {
@@ -51,7 +51,7 @@ namespace AegirServer.HTTP.Controller
             {
                 projects = GetByGuid(args[0]);
             }
-            this.SetSuccessfulContent(projects);
+            this.SetSuccessfulContent(projects,HttpStatusCode.OK);
         }
         public override void PostAction()
         {
