@@ -1,4 +1,5 @@
-﻿using AegirServer.Config;
+﻿using AegirSearch;
+using AegirServer.Config;
 using AegirServer.Project;
 using AegirServer.Service;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ namespace AegirServer.Runtime
         private BaseConfiguration config;
 
         public VesselConfigurationService VesselConfigs { get; private set; }
-
+        public LuceneService search = new LuceneService();
         public Workspace Workspace { get; private set; }
 
         public ServerContext(BaseConfiguration config)

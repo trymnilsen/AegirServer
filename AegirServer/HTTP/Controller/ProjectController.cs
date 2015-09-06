@@ -3,6 +3,7 @@ using AegirDataTypes.Workspace;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace AegirServer.HTTP.Controller
         {
             this.identifiers = new Dictionary<string, Func<string, SimulationProject[]>>();
             this.identifiers.Add("projectname",this.GetByName);
+            this.identifiers.Add("last_",this.GetByName);
         }
         public override void IndexAction()
         {
@@ -70,6 +72,10 @@ namespace AegirServer.HTTP.Controller
             }
             return projects;
         }
+        //private SimulationProject[] GetByLastModified(string lastNum)
+        //{
+            
+        //}
         private SimulationProject[] GetByVessel(string guid)
         {
             var projects = ServerContext.Workspace.Projects.Where(x => x.Vessel.Id.ToString() == guid).ToArray();

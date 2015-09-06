@@ -54,6 +54,10 @@
       <HintPath>..\packages\Fleck.0.13.0.52\lib\net40\Fleck.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -64,6 +68,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +83,7 @@
     <Compile Include="AppStarter.cs" />
     <Compile Include="HTTP\Controller\ConfigurationController.cs" />
     <Compile Include="HTTP\Controller\ProjectController.cs" />
+    <Compile Include="HTTP\Controller\SearchController.cs" />
     <Compile Include="HTTP\Controller\SessionController.cs" />
     <Compile Include="HTTP\HTTPUtil.cs" />
     <Compile Include="IO\EFileAvailability.cs" />
@@ -166,6 +175,10 @@
     <ProjectReference Include="..\AegirNMEA\AegirNMEA.csproj">
       <Project>{5cef24dd-51bf-4046-89ea-a034e42fb947}</Project>
       <Name>AegirNMEA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AegirSearch\AegirSearch.csproj">
+      <Project>{4f6c5c29-d856-4b7e-b385-a760b12253ba}</Project>
+      <Name>AegirSearch</Name>
     </ProjectReference>
     <ProjectReference Include="..\AegirSimulation\AegirSimulation.csproj">
       <Project>{939b417a-89bd-41e3-95df-1e04e5e235b0}</Project>
