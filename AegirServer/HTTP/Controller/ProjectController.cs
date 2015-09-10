@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using AegirServer.Persistence;
+using AegirDataTypes.Vessel;
 
 namespace AegirServer.HTTP.Controller
 {
@@ -22,6 +24,7 @@ namespace AegirServer.HTTP.Controller
             this.identifiers = new Dictionary<string, Func<string, SimulationProject[]>>();
             this.identifiers.Add("projectname",this.GetByName);
             this.identifiers.Add("last_",this.GetByName);
+            this.identifiers.Add("db", this.GetByDb);
         }
         public override void IndexAction()
         {
@@ -61,6 +64,19 @@ namespace AegirServer.HTTP.Controller
             ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(postData);
             Workspace workspace = ServerContext.Workspace;
             workspace.CreateProject(projectData);
+        }
+        private SimulationProject[] GetByDb(string name)
+        {
+            using (var context = new PersistanceContext())
+            {
+                List<SimulationProject> projects = new List<SimulationProject>();
+                foreach (var project in context.Projects)
+                {
+                    var vessel = new VesselConfiguration(project.VesselId, 200, 200);
+                    projects.Add(new SimulationProject(project.ProjectName, vessel));
+                }
+                return projects.ToArray();
+            }
         }
         private SimulationProject[] GetByName(string name)
         {

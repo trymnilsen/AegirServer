@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
-    <Compile Include="Database\PersistanceContext.cs" />
+    <Compile Include="Persistance\PersistanceContext.cs" />
     <Compile Include="HTTP\Controller\ConfigurationController.cs" />
     <Compile Include="HTTP\Controller\ProjectController.cs" />
     <Compile Include="HTTP\Controller\SearchController.cs" />

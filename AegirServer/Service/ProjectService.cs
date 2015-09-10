@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AegirServer.Service
 {
-    class ProjectService
+    public class ProjectService
     {
     }
 }

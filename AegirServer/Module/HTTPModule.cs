@@ -104,6 +104,7 @@ namespace AegirServer.Module
                             {
                                 //Generic error happended
                                 ctx.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                                Debug.WriteLine(e.ToString());
                             }
 
                         }

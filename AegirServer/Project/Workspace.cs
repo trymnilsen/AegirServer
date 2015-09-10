@@ -2,6 +2,7 @@
 using AegirDataTypes.Workspace;
 using AegirMessages.Project;
 using AegirServer.Config;
+using AegirServer.Persistence;
 using AegirServer.Service;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,12 @@ namespace AegirServer.Project
 
             SimulationProject newProject = new SimulationProject(details.ProjectName,vessel);
             Projects.Add(newProject);
+
+            using (var context = new PersistanceContext())
+            {
+                context.Projects.Add(details);
+                context.SaveChanges();
+            }
 
         }
         

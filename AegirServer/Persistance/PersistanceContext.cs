@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.Database
+namespace AegirServer.Persistence
 {
     class PersistanceContext : DbContext
     {
-        public DbSet<VesselConfiguration> Artists { get; set; }
-        public DbSet<ProjectData> Albums { get; set; }
+        public DbSet<VesselConfiguration> Vessels { get; set; }
+        public DbSet<ProjectData> Projects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
