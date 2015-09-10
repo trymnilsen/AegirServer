@@ -64,6 +64,9 @@ namespace AegirServer.HTTP.Controller
             ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(postData);
             Workspace workspace = ServerContext.Workspace;
             workspace.CreateProject(projectData);
+
+            //Just for testing
+            this.SetSuccessfulContent(projectData, HttpStatusCode.Created);
         }
         private SimulationProject[] GetByDb(string name)
         {
