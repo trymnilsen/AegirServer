@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AegirServer.Websocket
 {
     class WebsocketModule : AbstractModule
@@ -53,6 +54,13 @@ namespace AegirServer.Websocket
             this.SetUpFrameResolver();   
             //Set up postbox
             this.SetUpPostbox();
+            this.SetupWebscoketTest();
+        }
+        private void SetupWebscoketTest()
+        {
+            var wssv = new WebSocketSharp.Server.WebSocketServer("ws://localhost:8800");
+            wssv.AddWebSocketService<WebsocketTestBench>("/wstest");
+            wssv.Start();
         }
         private void SetUpFrameResolver()
         {

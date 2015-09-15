@@ -94,6 +94,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp">
+      <HintPath>..\packages\WebSocketSharp.1.0.3-rc9\lib\websocket-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +145,7 @@
     <Compile Include="Websocket\ISerializeableFrame.cs" />
     <Compile Include="Websocket\WebsocketFrameResolver.cs" />
     <Compile Include="Websocket\WebsocketFrameWrapper.cs" />
+    <Compile Include="Websocket\WebsocketTestBench.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
