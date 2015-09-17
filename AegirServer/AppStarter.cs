@@ -1,8 +1,10 @@
-﻿using AegirMessages;
+﻿using AegirDataTypes.Workspace;
+using AegirMessages;
 using AegirMessenger;
 using AegirServer.CLI;
 using AegirServer.Config;
 using AegirServer.Module;
+using AegirServer.Persistence;
 using AegirServer.Runtime;
 using AegirServer.Websocket;
 using System;
@@ -50,6 +52,14 @@ namespace AegirServer
             this.serverContext = new ServerContext(config);
             //Set up ctrl + c handling
                 Console.CancelKeyPress += Console_CancelKeyPress;
+            //We do a query to sql lite here, give it a chance to connect and cache without
+            //having to do it on the first request
+            Console.WriteLine("Loading Sql Lite");
+            using (var context = new PersistanceContext())
+            {
+                context.Projects.Any();
+                //we dont care about the result
+            }
             //Start Subsystems
             StartSubsystem(new HTTPModule());
             StartSubsystem(new SimulationModule());

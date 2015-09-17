@@ -153,7 +153,7 @@ namespace AegirServer.Module
         {
             var request = ctx.Request;
             string controllerName = request.RawUrl.Substring(1, request.RawUrl.Length - 1);//Remove first slash
-            Debug.WriteLine("Controller Name"+controllerName);
+            Debug.WriteLine("HTTP REQUEST: "+ request.HttpMethod +" URL: "+request.RawUrl+" Controller Name: " +controllerName);
             string[] args = controllerName.Split('/');
             //normalize arguments
             args = this.NormalizeArgs(args);

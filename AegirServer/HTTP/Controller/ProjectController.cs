@@ -62,6 +62,16 @@ namespace AegirServer.HTTP.Controller
         {
             string postData = GetTextData(Request);
             ProjectData projectData = JsonConvert.DeserializeObject<ProjectData>(postData);
+            //Check if a project with this name already exists
+            using (var context = new PersistanceContext())
+            {
+                ProjectData data = context.Projects.First(x=> x.ProjectName == projectData.ProjectName);
+                if (data != null)
+                {
+                    this.Response.AppendHeader("location", "/project/" + data.Id);
+                    throw new HTTPException(HttpStatusCode.SeeOther);
+                }
+            }
             Workspace workspace = ServerContext.Workspace;
             workspace.CreateProject(projectData);
 
