@@ -22,7 +22,7 @@ namespace AegirServer
             }
 
             if(System.Diagnostics.Debugger.IsAttached)
-            { 
+            {
                 Console.ReadKey(true);
             }
         }

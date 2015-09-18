@@ -1,6 +1,6 @@
 {
     "name": "Foobario",
-    "HttpEndpoint": "http://localhost:8080/",
+    "HttpEndpoint": "http://localhost:8090/",
     "WorkspaceFileName": "workspace.json",
     "MountPoints": [
       {

@@ -19,13 +19,11 @@ namespace AegirServer.Project
         private BaseConfiguration configuration;
         private WorkspaceFile workspace_data;
 
-        public ObservableCollection<SimulationProject> Projects { get; private set; }
         public SimulationProject CurrentProject { get; private set; }
 
         public Workspace(BaseConfiguration config)
         {
-            Projects = new ObservableCollection<SimulationProject>();
-            Projects.CollectionChanged += Projects_Changed;
+
             //Create new project
             this.configuration = config;
             workspace_data = WorkspaceFile.LoadWorkspace(config.WorkspaceFileName);
@@ -39,12 +37,11 @@ namespace AegirServer.Project
 
         public void LoadProjects()
         {
-            foreach(string projectPath in workspace_data.ProjectPaths)
-            {
-                SimulationProject project = new SimulationProject();
-                project.Load(projectPath);
-                Projects.Add(project);
-            }
+            //foreach(string projectPath in workspace_data.ProjectPaths)
+            //{
+            //    SimulationProject project = new SimulationProject();
+            //    project.Load(projectPath);
+            //}
         }
         /// <summary>
         /// Creates a new project and sets it as the current one, also updates the recent projects list
@@ -52,9 +49,6 @@ namespace AegirServer.Project
         public void CreateProject(ProjectData details)
         {
             var vessel = VesselConfigurationService.Vessels[0];
-
-            SimulationProject newProject = new SimulationProject(details.ProjectName,vessel);
-            Projects.Add(newProject);
 
             using (var context = new PersistanceContext())
             {
