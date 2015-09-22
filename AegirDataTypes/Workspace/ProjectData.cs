@@ -15,15 +15,21 @@ namespace AegirDataTypes.Workspace
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string VesselId { get; set; }
+        public string Description { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
         public ProjectData()
         {
 
         }
-        public ProjectData(string name, string vessel)
+        public ProjectData(string name, string description)
         {
-            this.ProjectName = name;
-            this.VesselId = vessel;
+            ProjectName = name;
+            Description = description;
+            CreatedDate = DateTime.Now;
+            LastModifiedDate = DateTime.Now;
         }
+    
     }
 }

@@ -140,8 +140,6 @@
     <Compile Include="Runtime\ServerContext.cs" />
     <Compile Include="Service\ProjectService.cs" />
     <Compile Include="Service\VesselConfigurationService.cs" />
-    <Compile Include="SQLite.cs" />
-    <Compile Include="SQLiteAsync.cs" />
     <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
     <Compile Include="Websocket\IFrameMapper.cs" />
     <Compile Include="Websocket\ISerializeableFrame.cs" />

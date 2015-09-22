@@ -111,7 +111,8 @@ namespace AegirServer.Module
                         finally
                         {
                             //Check if there is any content
-                            if(ctx.Response.ContentLength64 == 0 && !HTTPUtil.IsCodeError(ctx.Response.StatusCode))
+                            if (ctx.Response.ContentLength64 == 0 && 
+                                (ctx.Response.StatusCode >= 200 && ctx.Response.StatusCode < 300))
                             {
                                 ctx.Response.StatusCode = (int)HttpStatusCode.NoContent;
                                 //For some reason status description is set at the point the 
