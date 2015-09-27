@@ -10,9 +10,7 @@ namespace AegirMessenger
 
     public class Messenger
     {
-        private object addLock = new object();
-        private object unRegisterLock = new object();
-        private object sendMessageLock = new object();
+        private object subsLock = new object();
         private Dictionary<Type, MessageSubscriptions> subscriptions; 
         /// <summary>
         /// Creates new messenger for sending and receving messages
@@ -25,12 +23,21 @@ namespace AegirMessenger
         {
             postbox.IsOpen = false;
         }
-        public void Register<T>(Postbox postbox) where T : Message
+        public void Register<T>(Postbox postbox) 
+            where T : Message
         {
             Type MessageType = typeof(T);
-            lock(addLock)
+            Register(MessageType, postbox);
+        }
+        public void Register(Type MessageType, Postbox postbox)
+        {
+            if(!MessageType.IsSubclassOf(typeof(Message)))
             {
-                if(!subscriptions.ContainsKey(MessageType))
+                throw new ArgumentException("MessageType needs to be subclass of Message");
+            }
+            lock (subsLock)
+            {
+                if (!subscriptions.ContainsKey(MessageType))
                 {
                     subscriptions.Add(MessageType, new MessageSubscriptions());
                 }
@@ -39,7 +46,7 @@ namespace AegirMessenger
         }
         public void Publish(Message message)
         {
-            lock(sendMessageLock)
+            lock(subsLock)
             {
                 if (subscriptions.ContainsKey(message.GetType()))
                 {

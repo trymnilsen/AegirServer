@@ -44,6 +44,7 @@
     <Compile Include="Command\Transform\NudgeCommand.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\Movement\FollowWaypoint.cs" />
+    <Compile Include="Components\Movement\ForcesResolver.cs" />
     <Compile Include="Components\Movement\NMEAInput.cs" />
     <Compile Include="Components\Movement\VesselDynamics.cs" />
     <Compile Include="Components\Noise\PerlinNoise.cs" />

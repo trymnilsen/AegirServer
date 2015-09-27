@@ -19,6 +19,7 @@ namespace AegirMessenger
         }
         public Postbox(Dispatcher dispatcher)
         {
+            IsOpen = true;
             this.dispatcher = dispatcher;
         }
         public abstract void PostMessage(Message message);

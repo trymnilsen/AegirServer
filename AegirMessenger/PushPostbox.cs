@@ -9,8 +9,7 @@ namespace AegirMessenger
 {
     public class PushPostbox : Postbox
     {
-        public PushPostbox(Dispatcher dispatcher)
-            :base(dispatcher)
+        public PushPostbox()
         {
 
         }

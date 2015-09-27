@@ -19,18 +19,30 @@ namespace AegirServer.Websocket
         private ImmutableDictionary<Type, IFrameMessageMapper> messageToFrame;
         private ImmutableDictionary<IFrameMessageMapper, Type> frameToMessage;
         private object subscriptionsLock = new object();
+        private Messenger messenger;
+        private Postbox postbox;
 
-        public WebSocketRouter()
+        public WebSocketRouter(Messenger messenger)
         {
             clientSubscriptions = ImmutableList<WebSocketSubscription>.Empty;
             this.SetMessageFrameMappings();
+            this.messenger = messenger;
+            this.postbox = new PushPostbox();
         }
         public void SetMessageFrameMappings()
         {
             var mappers = new Dictionary<Type, IFrameMessageMapper>();
             //Add New mappers here
             mappers.Add(typeof(SimulationFrameComplete), new SimulationFrameCompleteMapper());
+
+
             //Don't change this, it sets the actually mapper dictionaries
+            //and subscribes to the given messages
+            foreach(IFrameMessageMapper mapper in mappers.Values)
+            {
+                messenger.Register(mapper.MessageType, postbox);
+            }
+            //Set both dictionaries
             messageToFrame = mappers.ToImmutableDictionary();
             frameToMessage = mappers.ToImmutableDictionary(kp => kp.Value, kp => kp.Key);
         }
