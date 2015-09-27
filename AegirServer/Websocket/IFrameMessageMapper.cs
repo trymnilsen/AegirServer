@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace AegirServer.Websocket
 {
-    public interface IFrameMapper
+    public interface IFrameMessageMapper
     {
-        ISerializeableFrame CreateFrameFromMessage(Message message);
-        Message CreateMessageFromFrame(ISerializeableFrame frame);
+        Type MessageType { get; }
+        MessageFrame CreateFrameFromMessage(Message message);
+        Message CreateMessageFromFrame(MessageFrame frame);
     }
 }

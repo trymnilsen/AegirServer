@@ -19,6 +19,7 @@ namespace AegirDataTypes.Workspace
 
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
+
         public ProjectData()
         {
 

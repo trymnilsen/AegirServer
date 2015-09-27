@@ -7,6 +7,7 @@ using AegirServer.Runtime;
 using Fleck;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,21 +20,36 @@ namespace AegirServer.Websocket
     {
         private WebSocketServer wsServer;
         private WebsocketFrameResolver frameResolver;
-        private IWebSocketConnection webSocketConnection;
+        private ConcurrentDictionary<Guid,IWebSocketConnection> webSocketConnection;
+        private WebSocketRouter router;
 
         public override void Run()
         {
             Console.WriteLine("Starting WS on port 8888");
             wsServer.Start(socket =>
             {
-                webSocketConnection = socket;
+                socket.OnOpen = () =>
+                {
+                    AddSocketClient(socket);
+                };
                 socket.OnMessage = Message =>
                 {
                     socket.Send(Message + " ECHOED");
+                    SendToAll("Foobar all broadcast: " + Message);   
                 };
             });
         }
-
+        public void SendToAll(string content)
+        {
+            foreach(IWebSocketConnection socket in webSocketConnection.Values)
+            {
+                socket.Send(content);
+            }
+        }
+        public void AddSocketClient(IWebSocketConnection connection)
+        {
+            webSocketConnection.TryAdd(connection.ConnectionInfo.Id, connection);
+        }
         public override void SetConfiguration(BaseConfiguration config)
         {
             //Nothing yet
@@ -49,19 +65,16 @@ namespace AegirServer.Websocket
         {
             Console.WriteLine("Creating WS on port 8888");
             wsServer = new WebSocketServer("ws://0.0.0.0:8888");
-
+            webSocketConnection = new ConcurrentDictionary<Guid, IWebSocketConnection>();
             //Set up frame resolver
             this.SetUpFrameResolver();   
             //Set up postbox
             this.SetUpPostbox();
-            this.SetupWebscoketTest();
         }
-        private void SetupWebscoketTest()
-        {
-            var wssv = new WebSocketSharp.Server.WebSocketServer("ws://localhost:8800");
-            wssv.AddWebSocketService<WebsocketTestBench>("/wstest");
-            wssv.Start();
-        }
+        //public void OnMessage(Itring message)
+        //{
+        //    socket
+        //}
         private void SetUpFrameResolver()
         {
             frameResolver = new WebsocketFrameResolver();
@@ -76,10 +89,10 @@ namespace AegirServer.Websocket
 
         private void SendToService(string frame)
         {
-            if(webSocketConnection!=null && this.webSocketConnection.IsAvailable)
-            {
-                webSocketConnection.Send(frame);
-            }
+            //if(webSocketConnection!=null && this.webSocketConnection.IsAvailable)
+            //{
+            //    webSocketConnection.Send(frame);
+            //}
         }
 
         void postbox_OnMessage(Message message)
