@@ -65,6 +65,10 @@
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -139,8 +143,9 @@
     <Compile Include="Service\ProjectService.cs" />
     <Compile Include="Service\VesselConfigurationService.cs" />
     <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
-    <Compile Include="Websocket\IFrameMapper.cs" />
+    <Compile Include="Websocket\IFrameMessageMapper.cs" />
     <Compile Include="Websocket\ISerializeableFrame.cs" />
+    <Compile Include="Websocket\Mapper\SimulationFrameCompleteMapper.cs" />
     <Compile Include="Websocket\MessageFrame.cs" />
     <Compile Include="Websocket\WebsocketFrameResolver.cs" />
     <Compile Include="Websocket\WebsocketFrameWrapper.cs" />
@@ -185,10 +190,6 @@
     <ProjectReference Include="..\AegirDataTypes\AegirDataTypes.csproj">
       <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
       <Name>AegirDataTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AegirLogging\AegirLogging.csproj">
-      <Project>{ee50156f-855a-4639-8fbf-e6252ff8d58f}</Project>
-      <Name>AegirLogging</Name>
     </ProjectReference>
     <ProjectReference Include="..\AegirMessages\AegirMessages.csproj">
       <Project>{c9a7bfd4-aecb-4bf2-bfeb-8d057357a5f7}</Project>

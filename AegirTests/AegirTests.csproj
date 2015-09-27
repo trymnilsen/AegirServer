@@ -55,10 +55,6 @@
       <Project>{2f19c223-91b4-418f-849b-5411831f3993}</Project>
       <Name>AegirDataTypes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AegirLogging\AegirLogging.csproj">
-      <Project>{ee50156f-855a-4639-8fbf-e6252ff8d58f}</Project>
-      <Name>AegirLogging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AegirMath\AegirMath.csproj">
       <Project>{5fb60e8e-f2d4-480f-8ecf-f86b061d27a6}</Project>
       <Name>AegirMath</Name>
