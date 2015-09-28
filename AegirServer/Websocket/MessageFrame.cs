@@ -17,8 +17,9 @@ namespace AegirServer.Websocket
             }
         }
         public object Target { get; set; }
+        public abstract string FrameId { get; }
 
         public abstract string Serialize();
-        public abstract string Deserialize();
+        public abstract object Deserialize(string data);
     }
 }

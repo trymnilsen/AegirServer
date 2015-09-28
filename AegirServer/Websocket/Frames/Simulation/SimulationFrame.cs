@@ -6,23 +6,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirServer.Websocket.Frames
+namespace AegirServer.Websocket.Frames.Simulation
 {
-    public class SimulationWebsocketFrame : ISerializeableFrame
+    public class SimulationFrame : MessageFrame
     {
 
         private SimulationStep data;
 
-        public SimulationWebsocketFrame(SimulationStep simulationData) 
+        public override string FrameId
+        {
+            get
+            {
+                return "SimulationFrame";
+            }
+        }
+
+        public SimulationFrame(SimulationStep simulationData) 
         {
             this.data = simulationData;
         }
-        public string Serialize()
+
+        public override string Serialize()
         {
             return JsonConvert.SerializeObject(this.data);
         }
 
-        public object Deserialize(string data)
+        public override object Deserialize(string data)
         {
             return JsonConvert.DeserializeObject<SimulationStep>(data);
         }

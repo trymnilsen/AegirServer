@@ -1,7 +1,9 @@
 ﻿using AegirMessages.Simulation;
 using AegirMessenger;
 using AegirServer.Websocket.Mapper;
+using AegirServer.Websocket.Mapper.Simulation;
 using Fleck;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -16,11 +18,12 @@ namespace AegirServer.Websocket
     {
         private ConcurrentDictionary<Guid, IWebSocketConnection> webSocketConnections;
         private ImmutableList<WebSocketSubscription> clientSubscriptions;
-        private ImmutableDictionary<Type, IFrameMessageMapper> messageToFrame;
-        private ImmutableDictionary<IFrameMessageMapper, Type> frameToMessage;
+        private IDictionary<Type, IFrameMessageMapper> messageToFrame;
+        private IDictionary<Type, IFrameMessageMapper> frameToMessage;
         private object subscriptionsLock = new object();
+        private bool canAddMappers = true;
         private Messenger messenger;
-        private Postbox postbox;
+        private PushPostbox postbox;
 
         public WebSocketRouter(Messenger messenger)
         {
@@ -28,25 +31,19 @@ namespace AegirServer.Websocket
             this.SetMessageFrameMappings();
             this.messenger = messenger;
             this.postbox = new PushPostbox();
+            this.postbox.OnMessage += BroadcastInternalFrame;
         }
+
         public void SetMessageFrameMappings()
         {
             var mappers = new Dictionary<Type, IFrameMessageMapper>();
             //Add New mappers here
-            mappers.Add(typeof(SimulationFrameComplete), new SimulationFrameCompleteMapper());
+            AddMapper(typeof(SimulationFrameComplete), 
+                      new SimulationFrameCompleteMapper());
 
-
-            //Don't change this, it sets the actually mapper dictionaries
-            //and subscribes to the given messages
-            foreach(IFrameMessageMapper mapper in mappers.Values)
-            {
-                messenger.Register(mapper.MessageType, postbox);
-            }
-            //Set both dictionaries
-            messageToFrame = mappers.ToImmutableDictionary();
-            frameToMessage = mappers.ToImmutableDictionary(kp => kp.Value, kp => kp.Key);
+            LockMappers();
         }
-
+         
         public void AddClient(IWebSocketConnection connection)
         {
             webSocketConnections.TryAdd(connection.ConnectionInfo.Id, connection);
@@ -83,7 +80,16 @@ namespace AegirServer.Websocket
         }
         public void BroadcastInternalFrame(Message message)
         {
-
+            if(message==null)
+            {
+                throw new ArgumentNullException("message");
+            }
+            if (messageToFrame.ContainsKey(message.GetType()))
+            {
+                IFrameMessageMapper mapper = messageToFrame[message.GetType()];
+                MessageFrame frame = mapper.CreateFrameFromMessage(message);
+                BroadcastFrame(frame);
+            }
         }
         public void BroadcastFrame(MessageFrame frame)
         {
@@ -105,7 +111,10 @@ namespace AegirServer.Websocket
                 IWebSocketConnection client = webSocketConnections[sub.ConnectionId];
                 if(client.IsAvailable)
                 {
-                    client.Send(frame.Serialize());
+                    //Wrap the frame
+                    WebsocketFrameWrapper wrapper = WrapFrame(frame);
+                    string serializedContent = JsonConvert.SerializeObject(wrapper);
+                    client.Send(serializedContent);
                 }
                 else
                 {
@@ -120,7 +129,39 @@ namespace AegirServer.Websocket
                 webSocketConnections.TryRemove(idToRemove, out ignored);
             }
         }
+        /// <summary>
+        /// Adds a mapper
+        /// </summary>
+        /// <param name="internalMessageType"></param>
+        /// <param name="messageFrameType"></param>
+        /// <param name="mapper"></param>
+        private void AddMapper(Type messageFrameType,
+                               IFrameMessageMapper mapper)
+        {
+            if(!canAddMappers)
+            {
+                throw new InvalidOperationException("Cannot add mappers after mappers has been locked");
+            }
+            messageToFrame.Add(mapper.MessageType, mapper);
+            messageToFrame.Add(messageFrameType, mapper);
+        }
+        private void LockMappers()
+        {
+            canAddMappers = false;
+            messageToFrame = messageToFrame.ToImmutableDictionary();
+            frameToMessage = frameToMessage.ToImmutableDictionary();
 
+            foreach(Type messageType in messageToFrame.Keys)
+            {
+                this.messenger.Register(messageType, postbox);
+            }
+        }
+        private WebsocketFrameWrapper WrapFrame(MessageFrame frame)
+        {
+            string name = frame.FrameId;
+            WebsocketFrameWrapper wrapped = new WebsocketFrameWrapper(name, frame);
+            return wrapped;
+        }
 
         private class WebSocketSubscription
         {

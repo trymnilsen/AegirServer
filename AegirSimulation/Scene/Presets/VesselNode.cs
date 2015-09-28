@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirSimulation.Scene
+namespace AegirSimulation.Scene.Presets
 {
-    public class Scenegraph
+    public class VesselNode : Node
     {
-        public void RunComponents()
-        {
-            
-        }
+        
     }
 }

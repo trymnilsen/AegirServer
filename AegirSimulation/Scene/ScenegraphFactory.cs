@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace AegirSimulation.Scene
 {
-    public class Scenegraph
+    public class ScenegraphFactory
     {
-        public void RunComponents()
+        public static Scenegraph CreateDefault()
         {
-            
+            //A Normal Scenegraph contains
+            return null;
         }
     }
 }

@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AegirMessenger;
+using AegirMessages.Simulation;
+using AegirServer.Websocket.Frames;
+using AegirServer.Websocket.Frames.Simulation;
 
-namespace AegirServer.Websocket.Mapper
+namespace AegirServer.Websocket.Mapper.Simulation
 {
     public class SimulationFrameCompleteMapper : IFrameMessageMapper
     {
@@ -13,13 +16,14 @@ namespace AegirServer.Websocket.Mapper
         {
             get
             {
-                throw new NotImplementedException();
+                return typeof(SimulationFrameComplete);
             }
         }
 
         public MessageFrame CreateFrameFromMessage(Message message)
         {
-            throw new NotImplementedException();
+            SimulationFrameComplete simMessage = message as SimulationFrameComplete;
+            return new SimulationFrame(simMessage.data);
         }
 
         public Message CreateMessageFromFrame(MessageFrame frame)

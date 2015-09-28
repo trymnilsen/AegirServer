@@ -142,12 +142,11 @@
     <Compile Include="Runtime\ServerContext.cs" />
     <Compile Include="Service\ProjectService.cs" />
     <Compile Include="Service\VesselConfigurationService.cs" />
-    <Compile Include="Websocket\Frames\SimulationWebsocketFrame.cs" />
+    <Compile Include="Websocket\Frames\Simulation\SimulationFrame.cs" />
     <Compile Include="Websocket\IFrameMessageMapper.cs" />
     <Compile Include="Websocket\ISerializeableFrame.cs" />
-    <Compile Include="Websocket\Mapper\SimulationFrameCompleteMapper.cs" />
+    <Compile Include="Websocket\Mapper\Simulation\SimulationFrameCompleteMapper.cs" />
     <Compile Include="Websocket\MessageFrame.cs" />
-    <Compile Include="Websocket\WebsocketFrameResolver.cs" />
     <Compile Include="Websocket\WebsocketFrameWrapper.cs" />
     <Compile Include="Websocket\WebsocketRouter.cs" />
   </ItemGroup>

@@ -13,5 +13,6 @@ namespace AegirSimulation.Scene
         public List<Node> Children { get; private set; }
         public Transformation Transformation { get; set; }
         public List<Component> Components { get; private set; }
+        public string Name { get; private set; }
     }
 }
