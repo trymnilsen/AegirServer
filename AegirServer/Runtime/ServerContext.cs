@@ -1,5 +1,4 @@
-﻿using AegirSearch;
-using AegirServer.Config;
+﻿using AegirServer.Config;
 using AegirServer.Project;
 using AegirServer.Service;
 using Newtonsoft.Json;

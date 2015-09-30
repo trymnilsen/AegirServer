@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AegirSimulation.Playback
+namespace AegirSimulation.Components.Noise
 {
-    public enum EPlaybackMode
+    class RandomDistribution
     {
-        PLAYING,
-        PAUSED,
-        REWIND
     }
 }

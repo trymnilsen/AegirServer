@@ -8,9 +8,18 @@ namespace AegirSimulation.Scene
 {
     public class Scenegraph
     {
+        public List<Node> RootNodes { get; set; }
+        public Scenegraph()
+        {
+            RootNodes = new List<Node>();
+        }
         public void RunComponents()
         {
             
+        }
+        public void AddNode(Node node)
+        {
+            RootNodes.Add(node);
         }
     }
 }

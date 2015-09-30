@@ -35,7 +35,6 @@ namespace AegirServer.Module
             this.RegisterController<ConfigurationController>("config");
             this.RegisterController<VesselConfigurationController>("vessel");
             this.RegisterController<SessionController>("session");
-            this.RegisterController<SearchController>("search");
         }
         /// <summary>
         /// Set the configuration of this module

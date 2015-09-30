@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AegirSimulation.Scene;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,6 +21,7 @@ namespace AegirDataTypes.Workspace
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
 
+        public Scenegraph Scene { get; set; }
         public ProjectData()
         {
 

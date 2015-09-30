@@ -48,9 +48,9 @@
     <Compile Include="Components\Movement\NMEAInput.cs" />
     <Compile Include="Components\Movement\VesselDynamics.cs" />
     <Compile Include="Components\Noise\PerlinNoise.cs" />
+    <Compile Include="Components\Noise\RandomDistribution.cs" />
     <Compile Include="Components\Water\Buoyancy.cs" />
     <Compile Include="Pipe\PipelineProvider.cs" />
-    <Compile Include="Playback\EPlaybackMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Node.cs" />
     <Compile Include="Scene\Presets\VesselNode.cs" />
