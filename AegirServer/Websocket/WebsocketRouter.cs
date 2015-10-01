@@ -28,10 +28,14 @@ namespace AegirServer.Websocket
         public WebSocketRouter(Messenger messenger)
         {
             clientSubscriptions = ImmutableList<WebSocketSubscription>.Empty;
-            this.SetMessageFrameMappings();
+            messageToFrame = new Dictionary<Type, IFrameMessageMapper>();
+            frameToMessage = new Dictionary<Type, IFrameMessageMapper>();
+
             this.messenger = messenger;
             this.postbox = new PushPostbox();
+            this.SetMessageFrameMappings();
             this.postbox.OnMessage += BroadcastInternalFrame;
+
         }
 
         public void SetMessageFrameMappings()
@@ -143,7 +147,7 @@ namespace AegirServer.Websocket
                 throw new InvalidOperationException("Cannot add mappers after mappers has been locked");
             }
             messageToFrame.Add(mapper.MessageType, mapper);
-            messageToFrame.Add(messageFrameType, mapper);
+            frameToMessage.Add(messageFrameType, mapper);
         }
         private void LockMappers()
         {

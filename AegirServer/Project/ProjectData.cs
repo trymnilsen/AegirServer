@@ -20,7 +20,7 @@ namespace AegirDataTypes.Workspace
 
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
-
+        [NotMapped]
         public Scenegraph Scene { get; set; }
         public ProjectData()
         {
